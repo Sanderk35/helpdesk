@@ -72,7 +72,6 @@
 			loginButton.TabIndex = 3;
 			loginButton.Text = "Login";
 			loginButton.UseVisualStyleBackColor = true;
-			loginButton.Click += this.loginButton_Click;
 			// 
 			// registerLabel
 			// 
@@ -92,7 +91,6 @@
 			registerButton.TabIndex = 0;
 			registerButton.Text = "Registreer";
 			registerButton.UseVisualStyleBackColor = true;
-			registerButton.Click += this.registerButton_Click;
 			// 
 			// Login
 			// 
