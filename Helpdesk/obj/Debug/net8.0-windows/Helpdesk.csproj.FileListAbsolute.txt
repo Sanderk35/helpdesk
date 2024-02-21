@@ -1,0 +1,17 @@
+C:\School\Helpdesk\Helpdesk\bin\Debug\net8.0-windows\Helpdesk.exe
+C:\School\Helpdesk\Helpdesk\bin\Debug\net8.0-windows\Helpdesk.deps.json
+C:\School\Helpdesk\Helpdesk\bin\Debug\net8.0-windows\Helpdesk.runtimeconfig.json
+C:\School\Helpdesk\Helpdesk\bin\Debug\net8.0-windows\Helpdesk.dll
+C:\School\Helpdesk\Helpdesk\bin\Debug\net8.0-windows\Helpdesk.pdb
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Login.resources
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.csproj.GenerateResource.cache
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.GeneratedMSBuildEditorConfig.editorconfig
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.AssemblyInfoInputs.cache
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.AssemblyInfo.cs
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.csproj.CoreCompileInputs.cache
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.dll
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\refint\Helpdesk.dll
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.pdb
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.genruntimeconfig.cache
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\ref\Helpdesk.dll
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Properties.Resources.resources

@@ -2,4 +2,5 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.idea/.idea.Helpdesk/.idea
+/.idea
+/.vs
