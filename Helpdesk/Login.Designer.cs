@@ -60,18 +60,25 @@
 			// 
 			passwordBox.Location = new Point(63, 129);
 			passwordBox.Name = "passwordBox";
+			passwordBox.PasswordChar = '•';
 			passwordBox.PlaceholderText = "Wachtwoord";
 			passwordBox.Size = new Size(182, 27);
 			passwordBox.TabIndex = 2;
 			// 
 			// loginButton
 			// 
+			loginButton.BackColor = SystemColors.ButtonFace;
+			loginButton.FlatAppearance.BorderColor = Color.Lime;
+			loginButton.FlatAppearance.MouseDownBackColor = Color.Lime;
+			loginButton.FlatAppearance.MouseOverBackColor = Color.Lime;
+			loginButton.FlatStyle = FlatStyle.System;
 			loginButton.Location = new Point(63, 176);
 			loginButton.Name = "loginButton";
 			loginButton.Size = new Size(94, 29);
 			loginButton.TabIndex = 3;
 			loginButton.Text = "Login";
-			loginButton.UseVisualStyleBackColor = true;
+			loginButton.UseVisualStyleBackColor = false;
+			loginButton.Click += loginButton_Click;
 			// 
 			// registerLabel
 			// 
@@ -85,12 +92,18 @@
 			// 
 			// registerButton
 			// 
+			registerButton.BackColor = SystemColors.Control;
+			registerButton.FlatAppearance.BorderColor = Color.Lime;
+			registerButton.FlatAppearance.MouseDownBackColor = Color.Lime;
+			registerButton.FlatAppearance.MouseOverBackColor = Color.Lime;
+			registerButton.FlatStyle = FlatStyle.System;
 			registerButton.Location = new Point(63, 269);
 			registerButton.Name = "registerButton";
 			registerButton.Size = new Size(94, 29);
 			registerButton.TabIndex = 0;
 			registerButton.Text = "Registreer";
-			registerButton.UseVisualStyleBackColor = true;
+			registerButton.UseVisualStyleBackColor = false;
+			registerButton.Click += registerButton_Click;
 			// 
 			// Login
 			// 
