@@ -52,42 +52,86 @@ namespace Helpdesk
 			string phone = phoneBox.Text;
 			DateTime birth = birthBox.Value;
 
-			string query = "INSERT INTO Users (Email, Password, FirstName, Infix, LastName, Place, Street, Housenum, Postal, Phone, Birthday) " +
-				"VALUES (@Email, @Password, @FirstName, @Infix, @LastName, @Place, @Street, @Housenumber, @Postal, @Phone, @Birthdate)";
+			bool hasLowercase = password.Any(char.IsLower);
+			bool hasUppercase = password.Any(char.IsUpper);
+			bool hasDigit = password.Any(char.IsDigit);
+			bool hasSpecial = password.Any(ch => !char.IsLetterOrDigit(ch));
+			bool hasLength = password.Length >= 8;
 
-			using (SqlConnection connection = new SqlConnection(_connectionString))
+			if (hasLowercase && hasUppercase && hasDigit && hasSpecial && hasLength)
 			{
-				using (SqlCommand command = new SqlCommand(query, connection))
+				if (birthBox.Value > DateTime.Today.AddYears(-18))
 				{
-					connection.Open();
-					command.Parameters.AddWithValue("@Email", email);
-					command.Parameters.AddWithValue("@Password", password);
-					command.Parameters.AddWithValue("@FirstName", firstName);
-					command.Parameters.AddWithValue("@Infix", infix);
-					command.Parameters.AddWithValue("@LastName", lastName);
-					command.Parameters.AddWithValue("@Place", place);
-					command.Parameters.AddWithValue("@Street", street);
-					command.Parameters.AddWithValue("@Housenumber", housenum);
-					command.Parameters.AddWithValue("@Postal", postal);
-					command.Parameters.AddWithValue("@Phone", phone);
-					command.Parameters.AddWithValue("@Birthdate", birth);
-					try
-					{
-						command.ExecuteNonQuery();
-						MessageBox.Show("Account aangemaakt! U kunt nu inloggen.");
-						connection.Close();
-						this.Close();
-					}
-					catch (SqlException ex) when (ex.Number == 2601)
-					{
-						MessageBox.Show("Er is al een account met deze email geregistreert", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
-					catch (Exception ex)
-					{
-						MessageBox.Show("Error: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
-					connection.Close();
+					MessageBox.Show("U moet minimaal 18 jaar oud zijn om een account aan te maken", "Leeftijd niet toegestaan",
+						MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
 				}
+				string query =
+					"INSERT INTO Users (Email, Password, FirstName, Infix, LastName, Place, Street, Housenum, Postal, Phone, Birthday) " +
+					"VALUES (@Email, @Password, @FirstName, @Infix, @LastName, @Place, @Street, @Housenumber, @Postal, @Phone, @Birthdate)";
+
+				using (SqlConnection connection = new SqlConnection(_connectionString))
+				{
+					using (SqlCommand command = new SqlCommand(query, connection))
+					{
+						connection.Open();
+						command.Parameters.AddWithValue("@Email", email);
+						command.Parameters.AddWithValue("@Password", password);
+						command.Parameters.AddWithValue("@FirstName", firstName);
+						command.Parameters.AddWithValue("@Infix", infix);
+						command.Parameters.AddWithValue("@LastName", lastName);
+						command.Parameters.AddWithValue("@Place", place);
+						command.Parameters.AddWithValue("@Street", street);
+						command.Parameters.AddWithValue("@Housenumber", housenum);
+						command.Parameters.AddWithValue("@Postal", postal);
+						command.Parameters.AddWithValue("@Phone", phone);
+						command.Parameters.AddWithValue("@Birthdate", birth);
+						try
+						{
+							command.ExecuteNonQuery();
+							MessageBox.Show("Account aangemaakt! U kunt nu inloggen.");
+							connection.Close();
+							this.Close();
+						}
+						catch (SqlException ex) when (ex.Number == 2601)
+						{
+							MessageBox.Show("Er is al een account met deze email geregistreert", "Error",
+								MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+						catch (Exception ex)
+						{
+							MessageBox.Show("Error: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+
+						connection.Close();
+					}
+				}
+			}
+			else
+			{
+				string message = "Het wachtwoord moet nog aan de volgende eisen voldoen:\n";
+				if (!hasLowercase)
+				{
+					message = message + "- Minimaal 1 kleine letter\n";
+				}
+				if (!hasUppercase)
+				{
+					message = message + "- Minimaal 1 hoofdletter\n";
+				}
+				if (!hasDigit)
+				{
+					message = message + "- Minimaal 1 cijfer\n";
+				}
+				if (!hasSpecial)
+				{
+					message = message + "- Minimaal 1 speciaal teken\n";
+				}
+				if (!hasLength)
+				{
+					message = message + "- Minimaal 8 tekens lang\n";
+				}
+				
+				MessageBox.Show(message, "Wachtwoord voldoet niet", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 			}
 		}
 	}
