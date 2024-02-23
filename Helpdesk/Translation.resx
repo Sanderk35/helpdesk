@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="minimum_age_message" xml:space="preserve">
+        <value>You need to be 18 years old to create an account</value>
+    </data>
+    <data name="minimum_age_caption" xml:space="preserve">
+        <value>Age not allowed</value>
+    </data>
+    <data name="account_created" xml:space="preserve">
+        <value>Account created! You can now sign in.</value>
+    </data>
+    <data name="email_used_message" xml:space="preserve">
+        <value>This email is already used</value>
+    </data>
+    <data name="error" xml:space="preserve">
+        <value>Error</value>
+    </data>
+    <data name="logged_in_customer" xml:space="preserve">
+        <value>Logged in as customer</value>
+    </data>
+    <data name="logged_in_staff" xml:space="preserve">
+        <value>Logged in as staff member</value>
+    </data>
+    <data name="login_failed" xml:space="preserve">
+        <value>Login failed</value>
+    </data>
+    <data name="login_failed_message" xml:space="preserve">
+        <value>Username or password incorrect, try again</value>
+    </data>
+    <data name="registerButton" xml:space="preserve">
+        <value>Sign up</value>
+    </data>
+    <data name="login_page" xml:space="preserve">
+        <value>Log in</value>
+    </data>
+    <data name="no_account_question" xml:space="preserve">
+        <value>No account yet?</value>
+    </data>
+    <data name="login_button" xml:space="preserve">
+        <value>Log in</value>
+    </data>
+    <data name="password_text" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="email_text" xml:space="preserve">
+        <value>E-mail</value>
+    </data>
+    <data name="firstName_text" xml:space="preserve">
+        <value>First name</value>
+    </data>
+    <data name="infix_text" xml:space="preserve">
+        <value>Infix</value>
+    </data>
+    <data name="lastName_text" xml:space="preserve">
+        <value>Last name</value>
+    </data>
+    <data name="place_text" xml:space="preserve">
+        <value>Residence</value>
+    </data>
+    <data name="housenum_text" xml:space="preserve">
+        <value>Housenum.</value>
+    </data>
+    <data name="street_text" xml:space="preserve">
+        <value>Street</value>
+    </data>
+    <data name="postal_text" xml:space="preserve">
+        <value>Postalcode</value>
+    </data>
+    <data name="phone_text" xml:space="preserve">
+        <value>Phonenumber</value>
+    </data>
+    <data name="confirm_text" xml:space="preserve">
+        <value>Repeat</value>
+    </data>
+    <data name="birth_text" xml:space="preserve">
+        <value>Birthdate</value>
+    </data>
+    <data name="register_title" xml:space="preserve">
+        <value>Register</value>
+    </data>
+</root>

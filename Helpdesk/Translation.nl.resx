@@ -1,0 +1,92 @@
+﻿<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="account_created" xml:space="preserve">
+        <value>Account aangemaakt! U kunt nu inloggen.</value>
+    </data>
+    <data name="email_used_message" xml:space="preserve">
+        <value>Er is al een account met deze email geregistreert</value>
+    </data>
+    <data name="logged_in_customer" xml:space="preserve">
+        <value>Ingelogd als klant</value>
+    </data>
+    <data name="logged_in_staff" xml:space="preserve">
+        <value>Ingelogd als medewerker</value>
+    </data>
+    <data name="login_failed" xml:space="preserve">
+        <value>Login mislukt</value>
+    </data>
+    <data name="login_failed_message" xml:space="preserve">
+        <value>De inloggegevens zijn incorrect, probeer het opnieuw</value>
+    </data>
+    <data name="minimum_age_caption" xml:space="preserve">
+        <value>Leeftijd niet toegestaan</value>
+    </data>
+    <data name="minimum_age_message" xml:space="preserve">
+        <value>Je moet 18 jaar oud zijn om een account te kunnen maken</value>
+    </data>
+    <data name="registerButton" xml:space="preserve">
+        <value>Registreer</value>
+    </data>
+    <data name="login_page" xml:space="preserve">
+        <value>Login</value>
+    </data>
+    <data name="no_account_question" xml:space="preserve">
+        <value>Nog geen account?</value>
+    </data>
+    <data name="login_button" xml:space="preserve">
+        <value>Login</value>
+    </data>
+    <data name="password_text" xml:space="preserve">
+        <value>Wachtwoord</value>
+    </data>
+    <data name="email_text" xml:space="preserve">
+        <value>Email</value>
+    </data>
+    <data name="place_text" xml:space="preserve">
+        <value>Woonplaats</value>
+    </data>
+    <data name="birth_text" xml:space="preserve">
+        <value>Geboortedatum</value>
+    </data>
+    <data name="confirm_text" xml:space="preserve">
+        <value>Herhaal</value>
+    </data>
+    <data name="firstName_text" xml:space="preserve">
+        <value>Voornaam</value>
+    </data>
+    <data name="housenum_text" xml:space="preserve">
+        <value>Huisnr.</value>
+    </data>
+    <data name="infix_text" xml:space="preserve">
+        <value>Tussenvoegsel</value>
+    </data>
+    <data name="lastName_text" xml:space="preserve">
+        <value>Achternaam</value>
+    </data>
+    <data name="phone_text" xml:space="preserve">
+        <value>Telefoonnummer</value>
+    </data>
+    <data name="postal_text" xml:space="preserve">
+        <value>Postcode</value>
+    </data>
+    <data name="register_title" xml:space="preserve">
+        <value>Registreren</value>
+    </data>
+    <data name="street_text" xml:space="preserve">
+        <value>Straat</value>
+    </data>
+    <data name="error" xml:space="preserve">
+        <value>Fout</value>
+    </data>
+</root>

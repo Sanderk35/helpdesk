@@ -49,7 +49,7 @@
 			// 
 			emailBox.Location = new Point(37, 32);
 			emailBox.Name = "emailBox";
-			emailBox.PlaceholderText = "Email";
+			emailBox.PlaceholderText = Translation.email_text;
 			emailBox.Size = new Size(321, 27);
 			emailBox.TabIndex = 0;
 			emailBox.TextChanged += textUpdate;
@@ -58,7 +58,7 @@
 			// 
 			firstNameBox.Location = new Point(37, 83);
 			firstNameBox.Name = "firstNameBox";
-			firstNameBox.PlaceholderText = "Voornaam";
+			firstNameBox.PlaceholderText = Translation.firstName_text;
 			firstNameBox.Size = new Size(104, 27);
 			firstNameBox.TabIndex = 1;
 			firstNameBox.TextChanged += textUpdate;
@@ -67,7 +67,7 @@
 			// 
 			infixBox.Location = new Point(162, 83);
 			infixBox.Name = "infixBox";
-			infixBox.PlaceholderText = "Tussenvoegsel";
+			infixBox.PlaceholderText = Translation.infix_text;
 			infixBox.Size = new Size(73, 27);
 			infixBox.TabIndex = 2;
 			infixBox.TextChanged += textUpdate;
@@ -76,7 +76,7 @@
 			// 
 			lastNameBox.Location = new Point(254, 83);
 			lastNameBox.Name = "lastNameBox";
-			lastNameBox.PlaceholderText = "Achternaam";
+			lastNameBox.PlaceholderText = Translation.lastName_text;
 			lastNameBox.Size = new Size(104, 27);
 			lastNameBox.TabIndex = 3;
 			lastNameBox.TextChanged += textUpdate;
@@ -85,7 +85,7 @@
 			// 
 			placeBox.Location = new Point(37, 137);
 			placeBox.Name = "placeBox";
-			placeBox.PlaceholderText = "Woonplaats";
+			placeBox.PlaceholderText = Translation.place_text;
 			placeBox.Size = new Size(91, 27);
 			placeBox.TabIndex = 4;
 			placeBox.TextChanged += textUpdate;
@@ -94,7 +94,7 @@
 			// 
 			streetBox.Location = new Point(134, 137);
 			streetBox.Name = "streetBox";
-			streetBox.PlaceholderText = "Straat";
+			streetBox.PlaceholderText = Translation.street_text;
 			streetBox.Size = new Size(95, 27);
 			streetBox.TabIndex = 5;
 			streetBox.TextChanged += textUpdate;
@@ -103,7 +103,7 @@
 			// 
 			housenumBox.Location = new Point(235, 137);
 			housenumBox.Name = "housenumBox";
-			housenumBox.PlaceholderText = "Huisnr.";
+			housenumBox.PlaceholderText = Translation.housenum_text;
 			housenumBox.Size = new Size(55, 27);
 			housenumBox.TabIndex = 6;
 			housenumBox.TextChanged += textUpdate;
@@ -112,7 +112,7 @@
 			// 
 			postalBox.Location = new Point(296, 137);
 			postalBox.Name = "postalBox";
-			postalBox.PlaceholderText = "Postcode";
+			postalBox.PlaceholderText = Translation.postal_text;
 			postalBox.Size = new Size(62, 27);
 			postalBox.TabIndex = 7;
 			postalBox.TextChanged += textUpdate;
@@ -121,7 +121,7 @@
 			// 
 			phoneBox.Location = new Point(37, 189);
 			phoneBox.Name = "phoneBox";
-			phoneBox.PlaceholderText = "Telefoonnummer";
+			phoneBox.PlaceholderText = Translation.phone_text;
 			phoneBox.Size = new Size(192, 27);
 			phoneBox.TabIndex = 8;
 			phoneBox.TextChanged += textUpdate;
@@ -141,7 +141,7 @@
 			passwordBox.Location = new Point(37, 245);
 			passwordBox.Name = "passwordBox";
 			passwordBox.PasswordChar = '•';
-			passwordBox.PlaceholderText = "Wachtwoord";
+			passwordBox.PlaceholderText = Translation.password_text;
 			passwordBox.Size = new Size(152, 27);
 			passwordBox.TabIndex = 10;
 			passwordBox.TextChanged += textUpdate;
@@ -151,7 +151,7 @@
 			confirmBox.Location = new Point(206, 245);
 			confirmBox.Name = "confirmBox";
 			confirmBox.PasswordChar = '•';
-			confirmBox.PlaceholderText = "Herhaal";
+			confirmBox.PlaceholderText = Translation.confirm_text;
 			confirmBox.Size = new Size(152, 27);
 			confirmBox.TabIndex = 11;
 			confirmBox.TextChanged += textUpdate;
@@ -164,7 +164,7 @@
 			registerButton.Name = "registerButton";
 			registerButton.Size = new Size(123, 39);
 			registerButton.TabIndex = 12;
-			registerButton.Text = "Registreer";
+			registerButton.Text = Translation.registerButton;
 			registerButton.UseVisualStyleBackColor = false;
 			registerButton.Click += registerButton_Click;
 			// 
@@ -175,7 +175,7 @@
 			birthLabel.Name = "birthLabel";
 			birthLabel.Size = new Size(115, 20);
 			birthLabel.TabIndex = 13;
-			birthLabel.Text = "Geboortedatum";
+			birthLabel.Text = Translation.birth_text;
 			// 
 			// Register
 			// 
@@ -203,7 +203,7 @@
 			MinimizeBox = false;
 			Name = "Register";
 			StartPosition = FormStartPosition.CenterParent;
-			Text = "Register";
+			Text = Translation.register_title;
 			ResumeLayout(false);
 			PerformLayout();
 		}

@@ -62,7 +62,7 @@ namespace Helpdesk
 			{
 				if (birthBox.Value > DateTime.Today.AddYears(-18))
 				{
-					MessageBox.Show("U moet minimaal 18 jaar oud zijn om een account aan te maken", "Leeftijd niet toegestaan",
+					MessageBox.Show(Translation.minimum_age_message, Translation.minimum_age_caption,
 						MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return;
 				}
@@ -89,18 +89,18 @@ namespace Helpdesk
 						try
 						{
 							command.ExecuteNonQuery();
-							MessageBox.Show("Account aangemaakt! U kunt nu inloggen.");
+							MessageBox.Show(Translation.account_created);
 							connection.Close();
 							this.Close();
 						}
 						catch (SqlException ex) when (ex.Number == 2601)
 						{
-							MessageBox.Show("Er is al een account met deze email geregistreert", "Error",
+							MessageBox.Show(Translation.email_used_message, Translation.error,
 								MessageBoxButtons.OK, MessageBoxIcon.Error);
 						}
 						catch (Exception ex)
 						{
-							MessageBox.Show("Error: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+							MessageBox.Show("Error: " + ex, Translation.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
 						}
 
 						connection.Close();

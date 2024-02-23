@@ -12,6 +12,14 @@
         },
         "runtime": {
           "Helpdesk.dll": {}
+        },
+        "resources": {
+          "en/Helpdesk.resources.dll": {
+            "locale": "en"
+          },
+          "nl/Helpdesk.resources.dll": {
+            "locale": "nl"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/3.1.0": {},

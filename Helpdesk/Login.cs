@@ -32,7 +32,7 @@ namespace Helpdesk
 					SqlDataReader userReader = userSearchCommand.ExecuteReader();
 					if (userReader.HasRows)
 					{
-						MessageBox.Show("Ingelogd als klant");
+						MessageBox.Show(Translation.logged_in_customer);
 					}
 					else
 					{
@@ -45,14 +45,14 @@ namespace Helpdesk
 						staffSearchCommand.Parameters.AddWithValue("@Password", password);
 						
 						SqlDataReader staffReader = staffSearchCommand.ExecuteReader();
-						
+
 						if (staffReader.HasRows)
 						{
-							MessageBox.Show("Ingelogd als medewerker");
+							MessageBox.Show(Translation.logged_in_staff);
 						}
 						else
 						{
-							MessageBox.Show("Login failed");
+							MessageBox.Show(Translation.login_failed_message, Translation.login_failed);
 						}
 					}
 				}

@@ -52,7 +52,7 @@
 			// 
 			emailBox.Location = new Point(63, 78);
 			emailBox.Name = "emailBox";
-			emailBox.PlaceholderText = "Email";
+			emailBox.PlaceholderText = Translation.email_text;
 			emailBox.Size = new Size(182, 27);
 			emailBox.TabIndex = 1;
 			// 
@@ -61,7 +61,7 @@
 			passwordBox.Location = new Point(63, 129);
 			passwordBox.Name = "passwordBox";
 			passwordBox.PasswordChar = '•';
-			passwordBox.PlaceholderText = "Wachtwoord";
+			passwordBox.PlaceholderText = Translation.password_text;
 			passwordBox.Size = new Size(182, 27);
 			passwordBox.TabIndex = 2;
 			// 
@@ -76,7 +76,7 @@
 			loginButton.Name = "loginButton";
 			loginButton.Size = new Size(94, 29);
 			loginButton.TabIndex = 3;
-			loginButton.Text = "Login";
+			loginButton.Text = Translation.login_button;
 			loginButton.UseVisualStyleBackColor = false;
 			loginButton.Click += loginButton_Click;
 			// 
@@ -88,7 +88,7 @@
 			registerLabel.Name = "registerLabel";
 			registerLabel.Size = new Size(182, 28);
 			registerLabel.TabIndex = 4;
-			registerLabel.Text = "Nog geen account?";
+			registerLabel.Text = Translation.no_account_question;
 			// 
 			// registerButton
 			// 
@@ -101,7 +101,7 @@
 			registerButton.Name = "registerButton";
 			registerButton.Size = new Size(94, 29);
 			registerButton.TabIndex = 0;
-			registerButton.Text = "Registreer";
+			registerButton.Text = Translation.registerButton;
 			registerButton.UseVisualStyleBackColor = false;
 			registerButton.Click += registerButton_Click;
 			// 
@@ -123,7 +123,7 @@
 			MinimizeBox = false;
 			Name = "Login";
 			StartPosition = FormStartPosition.CenterScreen;
-			Text = "Login";
+			Text = Translation.login_page;
 			((System.ComponentModel.ISupportInitialize)kpnLogo).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
