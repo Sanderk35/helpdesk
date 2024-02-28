@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-
-namespace Helpdesk
+﻿namespace Helpdesk
 {
 	public partial class Register : Form
 	{
@@ -100,7 +89,7 @@ namespace Helpdesk
 						}
 						catch (Exception ex)
 						{
-							MessageBox.Show("Error: " + ex, Translation.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+							MessageBox.Show(Translation.error + Translation.semicolon + ex, Translation.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
 						}
 
 						connection.Close();

@@ -69,6 +69,24 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Staff.
+        /// </summary>
+        internal static string add_staff {
+            get {
+                return ResourceManager.GetString("add_staff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string add_text {
+            get {
+                return ResourceManager.GetString("add_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Birthdate.
         /// </summary>
         internal static string birth_text {
@@ -78,11 +96,56 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change.
+        /// </summary>
+        internal static string change_button {
+            get {
+                return ResourceManager.GetString("change_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changes saved.
+        /// </summary>
+        internal static string changes_saved {
+            get {
+                return ResourceManager.GetString("changes_saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat.
         /// </summary>
         internal static string confirm_text {
             get {
                 return ResourceManager.GetString("confirm_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string delete_text {
+            get {
+                return ResourceManager.GetString("delete_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Staff.
+        /// </summary>
+        internal static string edit_staff {
+            get {
+                return ResourceManager.GetString("edit_staff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string edit_text {
+            get {
+                return ResourceManager.GetString("edit_text", resourceCulture);
             }
         }
         
@@ -114,11 +177,38 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First login.
+        /// </summary>
+        internal static string first_login {
+            get {
+                return ResourceManager.GetString("first_login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         internal static string firstName_text {
             get {
                 return ResourceManager.GetString("firstName_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fixed telephony.
+        /// </summary>
+        internal static string fixed_telephony {
+            get {
+                return ResourceManager.GetString("fixed_telephony", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Helpdesk personel.
+        /// </summary>
+        internal static string helpdesk_staff {
+            get {
+                return ResourceManager.GetString("helpdesk_staff", resourceCulture);
             }
         }
         
@@ -141,6 +231,24 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoices.
+        /// </summary>
+        internal static string invoices {
+            get {
+                return ResourceManager.GetString("invoices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IT professional.
+        /// </summary>
+        internal static string IT_staff {
+            get {
+                return ResourceManager.GetString("IT_staff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last name.
         /// </summary>
         internal static string lastName_text {
@@ -155,6 +263,15 @@ namespace Helpdesk {
         internal static string logged_in_customer {
             get {
                 return ResourceManager.GetString("logged_in_customer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logged in as IT professional.
+        /// </summary>
+        internal static string logged_in_ict {
+            get {
+                return ResourceManager.GetString("logged_in_ict", resourceCulture);
             }
         }
         
@@ -222,11 +339,65 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mobile telephony.
+        /// </summary>
+        internal static string mobile_telephony {
+            get {
+                return ResourceManager.GetString("mobile_telephony", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        internal static string new_password {
+            get {
+                return ResourceManager.GetString("new_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No account yet?.
         /// </summary>
         internal static string no_account_question {
             get {
                 return ResourceManager.GetString("no_account_question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        internal static string none {
+            get {
+                return ResourceManager.GetString("none", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        internal static string other {
+            get {
+                return ResourceManager.GetString("other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password changed.
+        /// </summary>
+        internal static string password_changed_caption {
+            get {
+                return ResourceManager.GetString("password_changed_caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords do not match.
+        /// </summary>
+        internal static string password_no_match {
+            get {
+                return ResourceManager.GetString("password_no_match", resourceCulture);
             }
         }
         
@@ -267,6 +438,15 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Prices.
+        /// </summary>
+        internal static string prices {
+            get {
+                return ResourceManager.GetString("prices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         internal static string register_title {
@@ -281,6 +461,98 @@ namespace Helpdesk {
         internal static string registerButton {
             get {
                 return ResourceManager.GetString("registerButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job.
+        /// </summary>
+        internal static string role_text {
+            get {
+                return ResourceManager.GetString("role_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string save {
+            get {
+                return ResourceManager.GetString("save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to : .
+        /// </summary>
+        internal static string semicolon {
+            get {
+                return ResourceManager.GetString("semicolon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specialism.
+        /// </summary>
+        internal static string specialism_text {
+            get {
+                return ResourceManager.GetString("specialism_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Staff added with password: .
+        /// </summary>
+        internal static string staff_added_1 {
+            get {
+                return ResourceManager.GetString("staff_added_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///The password has been copied..
+        /// </summary>
+        internal static string staff_added_2 {
+            get {
+                return ResourceManager.GetString("staff_added_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New account created.
+        /// </summary>
+        internal static string staff_added_header {
+            get {
+                return ResourceManager.GetString("staff_added_header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure?.
+        /// </summary>
+        internal static string staff_delete_caption {
+            get {
+                return ResourceManager.GetString("staff_delete_caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this account?
+        ///This action is irreversable..
+        /// </summary>
+        internal static string staff_delete_message {
+            get {
+                return ResourceManager.GetString("staff_delete_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Staff.
+        /// </summary>
+        internal static string staff_text {
+            get {
+                return ResourceManager.GetString("staff_text", resourceCulture);
             }
         }
         

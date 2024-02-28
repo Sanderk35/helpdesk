@@ -21,7 +21,7 @@
         <value>Ingelogd als klant</value>
     </data>
     <data name="logged_in_staff" xml:space="preserve">
-        <value>Ingelogd als medewerker</value>
+        <value>Ingelogd als helpdeskmedewerker</value>
     </data>
     <data name="login_failed" xml:space="preserve">
         <value>Login mislukt</value>
@@ -88,5 +88,98 @@
     </data>
     <data name="error" xml:space="preserve">
         <value>Fout</value>
+    </data>
+    <data name="logged_in_ict" xml:space="preserve">
+        <value>Ingelogd als ICT'er</value>
+    </data>
+    <data name="staff_added_1" xml:space="preserve">
+        <value>Personeelslid toegevoegd met het wachtwoord:</value>
+    </data>
+    <data name="staff_added_2" xml:space="preserve">
+        <value>
+Het wachtwoord is gekopieërd naar het klembord</value>
+    </data>
+    <data name="staff_added_header" xml:space="preserve">
+        <value>Nieuw account aangemaakt</value>
+    </data>
+    <data name="password_changed_caption" xml:space="preserve">
+        <value>Wachtwoord aangepast</value>
+    </data>
+    <data name="password_no_match" xml:space="preserve">
+        <value>Wachtwoorden komen niet overeen</value>
+    </data>
+    <data name="semicolon" xml:space="preserve">
+        <value>: </value>
+    </data>
+    <data name="specialism_text" xml:space="preserve">
+        <value>Specialisme</value>
+    </data>
+    <data name="role_text" xml:space="preserve">
+        <value>Baan</value>
+    </data>
+    <data name="add_text" xml:space="preserve">
+        <value>Toevoegen</value>
+    </data>
+    <data name="edit_text" xml:space="preserve">
+        <value>Bewerken</value>
+    </data>
+    <data name="delete_text" xml:space="preserve">
+        <value>Verwijderen</value>
+    </data>
+    <data name="staff_text" xml:space="preserve">
+        <value>Personeel</value>
+    </data>
+    <data name="new_password" xml:space="preserve">
+        <value>Nieuw wachtwoord</value>
+    </data>
+    <data name="change_button" xml:space="preserve">
+        <value>Verander</value>
+    </data>
+    <data name="first_login" xml:space="preserve">
+        <value>Eerste login</value>
+    </data>
+    <data name="helpdesk_staff" xml:space="preserve">
+        <value>Helpdeskmedewerker</value>
+    </data>
+    <data name="IT_staff" xml:space="preserve">
+        <value>ICT'er</value>
+    </data>
+    <data name="none" xml:space="preserve">
+        <value>Geen</value>
+    </data>
+    <data name="fixed_telephony" xml:space="preserve">
+        <value>Vaste telefonie</value>
+    </data>
+    <data name="mobile_telephony" xml:space="preserve">
+        <value>Mobiele telefonie</value>
+    </data>
+    <data name="invoices" xml:space="preserve">
+        <value>Facturen</value>
+    </data>
+    <data name="prices" xml:space="preserve">
+        <value>Tarieven</value>
+    </data>
+    <data name="other" xml:space="preserve">
+        <value>Overig</value>
+    </data>
+    <data name="save" xml:space="preserve">
+        <value>Opslaan</value>
+    </data>
+    <data name="add_staff" xml:space="preserve">
+        <value>Personeel toevoegen</value>
+    </data>
+    <data name="edit_staff" xml:space="preserve">
+        <value>Personeel bewerken</value>
+    </data>
+    <data name="changes_saved" xml:space="preserve">
+        <value>Veranderingen opgeslagen</value>
+    </data>
+    <data name="staff_delete_message" xml:space="preserve">
+        <value>Weet je zeker dat je dit account wilt verwijderen?
+D
+eze actie is onomkeerbaar</value>
+    </data>
+    <data name="staff_delete_caption" xml:space="preserve">
+        <value>Weet jij dit zeker?</value>
     </data>
 </root>

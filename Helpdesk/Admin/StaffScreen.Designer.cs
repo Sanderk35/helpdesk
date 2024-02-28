@@ -30,15 +30,17 @@
 		{
 			tableLayoutPanel1 = new TableLayoutPanel();
 			staffView = new ListView();
-			addButton = new Button();
-			editButton = new Button();
-			deleteButton = new Button();
 			emailColumn = new ColumnHeader();
 			firstNameColumn = new ColumnHeader();
 			infixColumn = new ColumnHeader();
 			lastNameColumn = new ColumnHeader();
 			roleColumn = new ColumnHeader();
 			specialismColumn = new ColumnHeader();
+			idColumn = new ColumnHeader();
+			addButton = new Button();
+			editButton = new Button();
+			deleteButton = new Button();
+			refreshButton = new Button();
 			tableLayoutPanel1.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -59,8 +61,9 @@
 			tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8.333333F));
 			tableLayoutPanel1.Controls.Add(staffView, 0, 0);
 			tableLayoutPanel1.Controls.Add(addButton, 1, 10);
-			tableLayoutPanel1.Controls.Add(editButton, 5, 10);
-			tableLayoutPanel1.Controls.Add(deleteButton, 9, 10);
+			tableLayoutPanel1.Controls.Add(editButton, 4, 10);
+			tableLayoutPanel1.Controls.Add(deleteButton, 7, 10);
+			tableLayoutPanel1.Controls.Add(refreshButton, 10, 10);
 			tableLayoutPanel1.Dock = DockStyle.Fill;
 			tableLayoutPanel1.Location = new Point(0, 0);
 			tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -77,88 +80,114 @@
 			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5.111111F));
 			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15.333333F));
 			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 4.44444466F));
-			tableLayoutPanel1.Size = new Size(800, 450);
+			tableLayoutPanel1.Size = new Size(633, 324);
 			tableLayoutPanel1.TabIndex = 0;
 			// 
 			// staffView
 			// 
-			staffView.Columns.AddRange(new ColumnHeader[] { emailColumn, firstNameColumn, infixColumn, lastNameColumn, roleColumn, specialismColumn });
+			staffView.Columns.AddRange(new ColumnHeader[] { emailColumn, firstNameColumn, infixColumn, lastNameColumn, roleColumn, specialismColumn, idColumn });
 			tableLayoutPanel1.SetColumnSpan(staffView, 12);
 			staffView.Dock = DockStyle.Fill;
+			staffView.FullRowSelect = true;
 			staffView.Location = new Point(3, 3);
 			staffView.MultiSelect = false;
 			staffView.Name = "staffView";
 			tableLayoutPanel1.SetRowSpan(staffView, 9);
-			staffView.Size = new Size(794, 327);
+			staffView.Size = new Size(627, 237);
 			staffView.TabIndex = 0;
 			staffView.UseCompatibleStateImageBehavior = false;
 			staffView.View = View.Details;
+			staffView.ItemSelectionChanged += staffView_ItemSelectionChanged;
+			// 
+			// emailColumn
+			// 
+			emailColumn.Text = Translation.email_text;
+			// 
+			// firstNameColumn
+			// 
+			firstNameColumn.Text = Translation.firstName_text;
+			// 
+			// infixColumn
+			// 
+			infixColumn.Text = Translation.infix_text;
+			// 
+			// lastNameColumn
+			// 
+			lastNameColumn.Text = Translation.lastName_text;
+			// 
+			// roleColumn
+			// 
+			roleColumn.Text = Translation.role_text;
+			// 
+			// specialismColumn
+			// 
+			specialismColumn.Text = Translation.specialism_text;
+			// 
+			// idColumn
+			// 
+			idColumn.Text = "Id";
+			idColumn.Width = 0;
 			// 
 			// addButton
 			// 
 			tableLayoutPanel1.SetColumnSpan(addButton, 2);
 			addButton.Dock = DockStyle.Fill;
-			addButton.Location = new Point(69, 359);
+			addButton.Location = new Point(55, 262);
 			addButton.Name = "addButton";
-			addButton.Size = new Size(126, 63);
+			addButton.Size = new Size(98, 43);
 			addButton.TabIndex = 1;
-			addButton.Text = "Toevoegen";
+			addButton.Text = Translation.add_text;
 			addButton.UseVisualStyleBackColor = true;
+			addButton.Click += addButton_Click;
 			// 
 			// editButton
 			// 
 			tableLayoutPanel1.SetColumnSpan(editButton, 2);
 			editButton.Dock = DockStyle.Fill;
-			editButton.Location = new Point(333, 359);
+			editButton.Enabled = false;
+			editButton.Location = new Point(211, 262);
 			editButton.Name = "editButton";
-			editButton.Size = new Size(126, 63);
+			editButton.Size = new Size(98, 43);
 			editButton.TabIndex = 2;
-			editButton.Text = "Bewerken";
+			editButton.Text = Translation.edit_text;
 			editButton.UseVisualStyleBackColor = true;
+			editButton.Click += editButton_Click;
 			// 
 			// deleteButton
 			// 
 			tableLayoutPanel1.SetColumnSpan(deleteButton, 2);
 			deleteButton.Dock = DockStyle.Fill;
-			deleteButton.Location = new Point(597, 359);
+			deleteButton.Enabled = false;
+			deleteButton.Location = new Point(367, 262);
 			deleteButton.Name = "deleteButton";
-			deleteButton.Size = new Size(126, 63);
+			deleteButton.Size = new Size(98, 43);
 			deleteButton.TabIndex = 3;
-			deleteButton.Text = "Verwijderen";
+			deleteButton.Text = Translation.delete_text;
 			deleteButton.UseVisualStyleBackColor = true;
+			deleteButton.Click += deleteButton_Click;
 			// 
-			// emailColumn
+			// refreshButton
 			// 
-			emailColumn.Text = "Email";
-			// 
-			// firstNameColumn
-			// 
-			firstNameColumn.Text = "Voornaam";
-			// 
-			// infixColumn
-			// 
-			infixColumn.Text = "Tussenvoegsel";
-			// 
-			// lastNameColumn
-			// 
-			lastNameColumn.Text = "Achternaam";
-			// 
-			// roleColumn
-			// 
-			roleColumn.Text = "Baan";
-			// 
-			// specialismColumn
-			// 
-			specialismColumn.Text = "Specialisme";
+			refreshButton.Dock = DockStyle.Fill;
+			refreshButton.Font = new Font("Segoe UI", 7F);
+			refreshButton.Image = Properties.Resources.refresh;
+			refreshButton.Location = new Point(523, 262);
+			refreshButton.Name = "refreshButton";
+			refreshButton.Size = new Size(46, 43);
+			refreshButton.TabIndex = 4;
+			refreshButton.UseVisualStyleBackColor = true;
+			refreshButton.Click += refreshButton_Click;
 			// 
 			// StaffScreen
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(800, 450);
+			ClientSize = new Size(633, 324);
 			Controls.Add(tableLayoutPanel1);
+			MinimumSize = new Size(651, 371);
 			Name = "StaffScreen";
-			Text = "Personeel";
+			Text = "Staff";
+			FormClosed += StaffScreen_FormClosed;
 			tableLayoutPanel1.ResumeLayout(false);
 			ResumeLayout(false);
 		}
@@ -176,5 +205,7 @@
 		private ColumnHeader lastNameColumn;
 		private ColumnHeader roleColumn;
 		private ColumnHeader specialismColumn;
+		private Button refreshButton;
+		private ColumnHeader idColumn;
 	}
 }

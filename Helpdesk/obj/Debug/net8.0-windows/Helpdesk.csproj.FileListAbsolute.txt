@@ -29,7 +29,6 @@ C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Admin.StaffScreen.
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Translation.resources
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Admin.StaffScreen.en.resources
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Properties.Resources.en.resources
-C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\en\Helpdesk.resources.cs
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\en\Helpdesk.resources.dll
 C:\School\Helpdesk\Helpdesk\bin\Debug\net8.0-windows\nl\Helpdesk.resources.dll
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Admin.StaffScreen.nl.resources
@@ -37,5 +36,8 @@ C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Login.nl.resources
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Properties.Resources.nl.resources
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Register.nl.resources
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Translation.nl.resources
-C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\nl\Helpdesk.resources.cs
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\nl\Helpdesk.resources.dll
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Admin.AddEditStaff.resources
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.PopUp.ChangePassword.resources
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\en\Helpdesk.resources.cs
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\nl\Helpdesk.resources.cs

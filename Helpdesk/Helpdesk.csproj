@@ -19,6 +19,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Translation.resx</DependentUpon>
     </Compile>
+    <Compile Remove="GlobalVariables.cs" />
   </ItemGroup>
 
   <ItemGroup>
