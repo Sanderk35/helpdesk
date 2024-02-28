@@ -393,11 +393,74 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password doesn&apos;t meet the requirements.
+        /// </summary>
+        internal static string password_doesnt_meet {
+            get {
+                return ResourceManager.GetString("password_doesnt_meet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - At least 8 characters.
+        /// </summary>
+        internal static string password_eight_characters {
+            get {
+                return ResourceManager.GetString("password_eight_characters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Passwords do not match.
         /// </summary>
         internal static string password_no_match {
             get {
                 return ResourceManager.GetString("password_no_match", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - At least 1 digit.
+        /// </summary>
+        internal static string password_one_digit {
+            get {
+                return ResourceManager.GetString("password_one_digit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - At least 1 lowercase character.
+        /// </summary>
+        internal static string password_one_lower {
+            get {
+                return ResourceManager.GetString("password_one_lower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - At least 1 special character.
+        /// </summary>
+        internal static string password_one_special {
+            get {
+                return ResourceManager.GetString("password_one_special", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - At least 1 uppercase character.
+        /// </summary>
+        internal static string password_one_upper {
+            get {
+                return ResourceManager.GetString("password_one_upper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password doesn&apos;t meet the following requirements:.
+        /// </summary>
+        internal static string password_strong_message {
+            get {
+                return ResourceManager.GetString("password_strong_message", resourceCulture);
             }
         }
         

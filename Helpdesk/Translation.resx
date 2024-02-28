@@ -188,4 +188,25 @@ This action is irreversable.</value>
     <data name="staff_delete_caption" xml:space="preserve">
         <value>Are you sure?</value>
     </data>
+    <data name="password_strong_message" xml:space="preserve">
+        <value>The password doesn't meet the following requirements:</value>
+    </data>
+    <data name="password_one_lower" xml:space="preserve">
+        <value>- At least 1 lowercase character</value>
+    </data>
+    <data name="password_one_upper" xml:space="preserve">
+        <value>- At least 1 uppercase character</value>
+    </data>
+    <data name="password_one_digit" xml:space="preserve">
+        <value>- At least 1 digit</value>
+    </data>
+    <data name="password_one_special" xml:space="preserve">
+        <value>- At least 1 special character</value>
+    </data>
+    <data name="password_eight_characters" xml:space="preserve">
+        <value>- At least 8 characters</value>
+    </data>
+    <data name="password_doesnt_meet" xml:space="preserve">
+        <value>Password doesn't meet the requirements</value>
+    </data>
 </root>

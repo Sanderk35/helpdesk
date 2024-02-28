@@ -87,6 +87,11 @@
 							MessageBox.Show(Translation.email_used_message, Translation.error,
 								MessageBoxButtons.OK, MessageBoxIcon.Error);
 						}
+						catch (SqlException ex) when (ex.Number == 2628)
+						{
+							MessageBox.Show("Password too long, maximum length is 50 characters", "Password too long",
+								MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
 						catch (Exception ex)
 						{
 							MessageBox.Show(Translation.error + Translation.semicolon + ex, Translation.error, MessageBoxButtons.OK, MessageBoxIcon.Error);

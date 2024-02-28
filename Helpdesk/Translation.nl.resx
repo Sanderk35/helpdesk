@@ -93,7 +93,7 @@
         <value>Ingelogd als ICT'er</value>
     </data>
     <data name="staff_added_1" xml:space="preserve">
-        <value>Personeelslid toegevoegd met het wachtwoord:</value>
+        <value>Personeelslid toegevoegd met het wachtwoord: </value>
     </data>
     <data name="staff_added_2" xml:space="preserve">
         <value>
@@ -176,10 +176,30 @@ Het wachtwoord is gekopieërd naar het klembord</value>
     </data>
     <data name="staff_delete_message" xml:space="preserve">
         <value>Weet je zeker dat je dit account wilt verwijderen?
-D
-eze actie is onomkeerbaar</value>
+Deze actie is onomkeerbaar</value>
     </data>
     <data name="staff_delete_caption" xml:space="preserve">
         <value>Weet jij dit zeker?</value>
+    </data>
+    <data name="password_strong_message" xml:space="preserve">
+        <value>Het wachtwoord moet nog aan de volgende eisen voldoen:</value>
+    </data>
+    <data name="password_one_digit" xml:space="preserve">
+        <value>- Minimaal 1 cijfer</value>
+    </data>
+    <data name="password_one_lower" xml:space="preserve">
+        <value>- Minimaal 1 kleine letter</value>
+    </data>
+    <data name="password_one_upper" xml:space="preserve">
+        <value>- Minimaal 1 hoofdletter</value>
+    </data>
+    <data name="password_one_special" xml:space="preserve">
+        <value>- Minimaal 1 speciaal teken</value>
+    </data>
+    <data name="password_eight_characters" xml:space="preserve">
+        <value>- Minimaal 8 karakters</value>
+    </data>
+    <data name="password_doesnt_meet" xml:space="preserve">
+        <value>Wachtwoord voldoet niet</value>
     </data>
 </root>
