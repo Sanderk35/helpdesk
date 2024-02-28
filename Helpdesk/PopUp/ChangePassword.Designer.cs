@@ -37,6 +37,7 @@
 			// 
 			newPasswordBox.Location = new Point(12, 31);
 			newPasswordBox.Name = "newPasswordBox";
+			newPasswordBox.PasswordChar = '•';
 			newPasswordBox.PlaceholderText = Translation.new_password;
 			newPasswordBox.Size = new Size(201, 27);
 			newPasswordBox.TabIndex = 0;
@@ -45,6 +46,7 @@
 			// 
 			confirmPasswordBox.Location = new Point(236, 31);
 			confirmPasswordBox.Name = "confirmPasswordBox";
+			confirmPasswordBox.PasswordChar = '•';
 			confirmPasswordBox.PlaceholderText = Translation.confirm_text;
 			confirmPasswordBox.Size = new Size(201, 27);
 			confirmPasswordBox.TabIndex = 1;
@@ -63,7 +65,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(449, 125);
+			ClientSize = new Size(445, 121);
 			ControlBox = false;
 			Controls.Add(changePasswordButton);
 			Controls.Add(confirmPasswordBox);
@@ -75,7 +77,7 @@
 			ShowIcon = false;
 			ShowInTaskbar = false;
 			StartPosition = FormStartPosition.CenterParent;
-			Text = Translation.first_login;
+			Text = "First login";
 			ResumeLayout(false);
 			PerformLayout();
 		}
