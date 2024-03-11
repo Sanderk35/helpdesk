@@ -60,13 +60,13 @@ namespace Helpdesk
 
 							int role = 0;
 							int id = 0;
-							int firstTime = 0;
+							byte firstTime = 0;
 
 							foreach (DataRow row in dataTable.Rows)
 							{
 								role = (int)row["role"];
 								id = (int)row["id"];
-								firstTime = (int)row["firstTime"];
+								firstTime = (byte)row["firstTime"];
 							}
 
 							if (role == 2)
@@ -97,6 +97,7 @@ namespace Helpdesk
 						else
 						{
 							MessageBox.Show(Translation.login_failed_message, Translation.login_failed);
+							passwordBox.Clear();
 						}
 					}
 				}

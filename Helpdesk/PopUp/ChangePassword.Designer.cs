@@ -77,7 +77,7 @@
 			ShowIcon = false;
 			ShowInTaskbar = false;
 			StartPosition = FormStartPosition.CenterParent;
-			Text = "First login";
+			Text = Translation.first_login;
 			ResumeLayout(false);
 			PerformLayout();
 		}

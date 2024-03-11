@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffScreen));
 			tableLayoutPanel1 = new TableLayoutPanel();
 			staffView = new ListView();
 			emailColumn = new ColumnHeader();
@@ -184,8 +185,10 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(633, 324);
 			Controls.Add(tableLayoutPanel1);
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			MinimumSize = new Size(651, 371);
 			Name = "StaffScreen";
+			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Staff";
 			FormClosed += StaffScreen_FormClosed;
 			tableLayoutPanel1.ResumeLayout(false);

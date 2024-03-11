@@ -162,6 +162,8 @@
 			Controls.Add(tableLayoutPanel1);
 			MinimumSize = new Size(402, 321);
 			Name = "AddEditStaff";
+			ShowIcon = false;
+			ShowInTaskbar = false;
 			StartPosition = FormStartPosition.CenterParent;
 			tableLayoutPanel1.ResumeLayout(false);
 			tableLayoutPanel1.PerformLayout();

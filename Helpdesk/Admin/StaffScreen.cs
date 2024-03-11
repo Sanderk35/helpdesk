@@ -33,19 +33,28 @@ namespace Helpdesk.Admin
 				item.SubItems.Add(row["LastName"].ToString());
 
 				if ((int)row["Role"] == 2)
-				{
 					item.SubItems.Add("Admin");
-				}
 				else if ((int)row["Role"] == 1)
-				{
-					item.SubItems.Add("ICT'er");
-				}
+					item.SubItems.Add(Translation.IT_staff);
 				else
-				{
-					item.SubItems.Add("Helpdeskmedewerker");
-				}
+					item.SubItems.Add(Translation.helpdesk_staff);
 
-				item.SubItems.Add(row["Specialism"].ToString());
+				if ((int)row["Specialism"] == 0)
+					item.SubItems.Add(Translation.none);
+				else if ((int)row["Specialism"] == 1)
+					item.SubItems.Add("Tv");
+				else if ((int)row["Specialism"] == 2)
+					item.SubItems.Add("Internet");
+				else if ((int)row["Specialism"] == 3)
+					item.SubItems.Add(Translation.fixed_telephony);
+				else if ((int)row["Specialism"] == 4)
+					item.SubItems.Add(Translation.mobile_telephony);
+				else if ((int)row["Specialism"] == 5)
+					item.SubItems.Add(Translation.invoices);
+				else if ((int)row["Specialism"] == 6)
+					item.SubItems.Add(Translation.prices);
+				else if ((int)row["Specialism"] == 7)
+					item.SubItems.Add(Translation.other);
 				item.SubItems.Add(row["ID"].ToString());
 				staffView.Items.Add(item);
 			}

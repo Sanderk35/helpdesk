@@ -39,5 +39,3 @@ C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Translation.nl.res
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\nl\Helpdesk.resources.dll
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Admin.AddEditStaff.resources
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.PopUp.ChangePassword.resources
-C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\en\Helpdesk.resources.cs
-C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\nl\Helpdesk.resources.cs
