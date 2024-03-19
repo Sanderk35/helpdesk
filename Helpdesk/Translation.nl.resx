@@ -202,4 +202,23 @@ Deze actie is onomkeerbaar</value>
     <data name="password_doesnt_meet" xml:space="preserve">
         <value>Wachtwoord voldoet niet</value>
     </data>
+    <data name="too_long_password" xml:space="preserve">
+        <value>Wachtwoord te lang, maximaal 50 karakters</value>
+    </data>
+    <data name="staffmail_exists" xml:space="preserve">
+        <value>Er is al een personeelslid met deze email. 
+Gebruik een andere alstublieft.</value>
+    </data>
+    <data name="too_long_caption" xml:space="preserve">
+        <value>Wachtwoord te lang</value>
+    </data>
+    <data name="duplicate_email" xml:space="preserve">
+        <value>Email dubbel gebruikt</value>
+    </data>
+    <data name="email_invalid_message" xml:space="preserve">
+        <value>Deze email bestaat niet, probeer het opnieuw met een andere email.</value>
+    </data>
+    <data name="email_invalid_caption" xml:space="preserve">
+        <value>Email bestaat niet</value>
+    </data>
 </root>

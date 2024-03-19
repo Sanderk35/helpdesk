@@ -55,70 +55,79 @@ namespace Helpdesk.Admin
 
 		private void saveButton_Click(object sender, EventArgs e)
 		{
-			string email = emailBox.Text;
-			string firstName = firstNameBox.Text;
-			string infix = infixBox.Text;
-			string lastName = lastNameBox.Text;
-			int role = jobBox.SelectedIndex;
-			int specialism;
-			
-			if (role == 1)
+			try
 			{
-				specialism = specialismBox.SelectedIndex;
+				string email = emailBox.Text.ToLower();
+				string firstName = firstNameBox.Text;
+				string infix = infixBox.Text;
+				string lastName = lastNameBox.Text;
+				int role = jobBox.SelectedIndex;
+				int specialism;
+
+				if (role == 1)
+				{
+					specialism = specialismBox.SelectedIndex;
+				}
+				else
+				{
+					specialism = 0;
+				}
+
+				if (!isEdit)
+				{
+					string query =
+						"INSERT INTO Staff (Email, FirstName, Infix, LastName, Role, SpecialismId, Password) " +
+						"VALUES (@Email, @FirstName, @Infix, @LastName, @Role, @Specialism, @Password)";
+
+					SqlConnection connection = new SqlConnection(_connectionString);
+					SqlCommand command = new SqlCommand(query, connection);
+
+					command.Parameters.AddWithValue("@Email", email);
+					command.Parameters.AddWithValue("@FirstName", firstName);
+					command.Parameters.AddWithValue("@Infix", infix);
+					command.Parameters.AddWithValue("@LastName", lastName);
+					command.Parameters.AddWithValue("@Role", role);
+					command.Parameters.AddWithValue("@Specialism", specialism);
+					string password = GenerateRandomPassword();
+					command.Parameters.AddWithValue("@Password", password);
+
+					connection.Open();
+					command.ExecuteNonQuery();
+					connection.Close();
+
+					MessageBox.Show(Translation.staff_added_1 + password + Translation.staff_added_2,
+						Translation.staff_added_header, MessageBoxButtons.OK, MessageBoxIcon.Information);
+					Clipboard.SetText(password);
+					this.Close();
+				}
+				else
+				{
+					string query = "UPDATE Staff SET Email = @Email, FirstName = @FirstName, Infix = @Infix, " +
+					               "LastName = @LastName, Role = @Role, SpecialismId = @Specialism WHERE Id = @Id";
+
+					SqlConnection connection = new SqlConnection(_connectionString);
+
+					SqlCommand command = new SqlCommand(query, connection);
+
+					command.Parameters.AddWithValue("@Email", email);
+					command.Parameters.AddWithValue("@FirstName", firstName);
+					command.Parameters.AddWithValue("@Infix", infix);
+					command.Parameters.AddWithValue("@LastName", lastName);
+					command.Parameters.AddWithValue("@Role", role);
+					command.Parameters.AddWithValue("@Specialism", specialism);
+					command.Parameters.AddWithValue("@Id", staffId);
+
+					connection.Open();
+					command.ExecuteNonQuery();
+					connection.Close();
+
+					MessageBox.Show(Translation.changes_saved);
+					this.Close();
+				}
 			}
-			else
+			catch (SqlException ex) when (ex.Number == 2627)
 			{
-				specialism = 0;
-			}
-			
-			if (!isEdit)
-			{
-				string query = "INSERT INTO Staff (Email, FirstName, Infix, LastName, Role, Specialism, Password) " +
-				               "VALUES (@Email, @FirstName, @Infix, @LastName, @Role, @Specialism, @Password)";
-				
-				SqlConnection connection = new SqlConnection(_connectionString);
-				SqlCommand command = new SqlCommand(query, connection);
-				
-				command.Parameters.AddWithValue("@Email", email);
-				command.Parameters.AddWithValue("@FirstName", firstName);
-				command.Parameters.AddWithValue("@Infix", infix);
-				command.Parameters.AddWithValue("@LastName", lastName);
-				command.Parameters.AddWithValue("@Role", role);
-				command.Parameters.AddWithValue("@Specialism", specialism);
-				string password = GenerateRandomPassword();
-				command.Parameters.AddWithValue("@Password", password);
-				
-				connection.Open();
-				command.ExecuteNonQuery();
-				connection.Close();
-				
-				MessageBox.Show(Translation.staff_added_1 + password + Translation.staff_added_2, Translation.staff_added_header, MessageBoxButtons.OK, MessageBoxIcon.Information);
-				Clipboard.SetText(password);
-				this.Close();
-			}
-			else
-			{
-				string query = "UPDATE Staff SET Email = @Email, FirstName = @FirstName, Infix = @Infix, " +
-				               "LastName = @LastName, Role = @Role, Specialism = @Specialism WHERE Id = @Id";
-				
-				SqlConnection connection = new SqlConnection(_connectionString);
-				
-				SqlCommand command = new SqlCommand(query, connection);
-				
-				command.Parameters.AddWithValue("@Email", email);
-				command.Parameters.AddWithValue("@FirstName", firstName);
-				command.Parameters.AddWithValue("@Infix", infix);
-				command.Parameters.AddWithValue("@LastName", lastName);
-				command.Parameters.AddWithValue("@Role", role);
-				command.Parameters.AddWithValue("@Specialism", specialism);
-				command.Parameters.AddWithValue("@Id", staffId);
-				
-				connection.Open();
-				command.ExecuteNonQuery();
-				connection.Close();
-				
-				MessageBox.Show(Translation.changes_saved);
-				this.Close();
+				MessageBox.Show(Translation.staffmail_exists, Translation.duplicate_email, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 

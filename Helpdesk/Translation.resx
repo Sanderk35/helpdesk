@@ -28,7 +28,7 @@
         <value>Account created! You can now sign in.</value>
     </data>
     <data name="email_used_message" xml:space="preserve">
-        <value>This email is already used</value>
+        <value>This e-mail is already used</value>
     </data>
     <data name="error" xml:space="preserve">
         <value>Error</value>
@@ -43,7 +43,7 @@
         <value>Login failed</value>
     </data>
     <data name="login_failed_message" xml:space="preserve">
-        <value>Username or password incorrect, try again</value>
+        <value>E-mail or password incorrect, try again</value>
     </data>
     <data name="registerButton" xml:space="preserve">
         <value>Sign up</value>
@@ -208,5 +208,24 @@ This action is irreversable.</value>
     </data>
     <data name="password_doesnt_meet" xml:space="preserve">
         <value>Password doesn't meet the requirements</value>
+    </data>
+    <data name="too_long_password" xml:space="preserve">
+        <value>Password too long, maximum length is 50 characters</value>
+    </data>
+    <data name="staffmail_exists" xml:space="preserve">
+        <value>There already exists a staff member with this email address.
+Please use a different email address.</value>
+    </data>
+    <data name="too_long_caption" xml:space="preserve">
+        <value>Password too long</value>
+    </data>
+    <data name="duplicate_email" xml:space="preserve">
+        <value>Duplicate email</value>
+    </data>
+    <data name="email_invalid_message" xml:space="preserve">
+        <value>This e-mail doesn't exist, try again with a different email.</value>
+    </data>
+    <data name="email_invalid_caption" xml:space="preserve">
+        <value>E-mail doesn't exist</value>
     </data>
 </root>

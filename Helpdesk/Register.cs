@@ -1,4 +1,9 @@
-﻿namespace Helpdesk
+﻿using System.Net;
+using System.Runtime.InteropServices.JavaScript;
+using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
+
+namespace Helpdesk
 {
 	public partial class Register : Form
 	{
@@ -29,103 +34,160 @@
 
 		private void registerButton_Click(object sender, EventArgs e)
 		{
-			string email = emailBox.Text;
-			string password = passwordBox.Text;
-			string firstName = firstNameBox.Text;
-			string infix = infixBox.Text;
-			string lastName = lastNameBox.Text;
-			string place = placeBox.Text;
-			string street = streetBox.Text;
-			string housenum = housenumBox.Text;
-			string postal = postalBox.Text;
-			string phone = phoneBox.Text;
-			DateTime birth = birthBox.Value;
+			string apiKey = "7eaea3f09faf460f86f4205c19119b10";
+			string email = emailBox.Text.ToLower();
+			
+			string url = $"https://api.zerobounce.net/v2/validate?api_key={apiKey}&email={email}";
+			
+			WebClient client = new WebClient();
+			string response = client.DownloadString(url);
+			
+			JObject jsonResponse = JObject.Parse(response);
+			
+			string result = jsonResponse.Value<string>("status");
 
-			bool hasLowercase = password.Any(char.IsLower);
-			bool hasUppercase = password.Any(char.IsUpper);
-			bool hasDigit = password.Any(char.IsDigit);
-			bool hasSpecial = password.Any(ch => !char.IsLetterOrDigit(ch));
-			bool hasLength = password.Length >= 8;
-
-			if (hasLowercase && hasUppercase && hasDigit && hasSpecial && hasLength)
+			// if (result == "valid")
 			{
-				if (birthBox.Value > DateTime.Today.AddYears(-18))
-				{
-					MessageBox.Show(Translation.minimum_age_message, Translation.minimum_age_caption,
-						MessageBoxButtons.OK, MessageBoxIcon.Error);
-					return;
-				}
-				string query =
-					"INSERT INTO Users (Email, Password, FirstName, Infix, LastName, Place, Street, Housenum, Postal, Phone, Birthday) " +
-					"VALUES (@Email, @Password, @FirstName, @Infix, @LastName, @Place, @Street, @Housenumber, @Postal, @Phone, @Birthdate)";
+				string password = passwordBox.Text;
+				string firstName = firstNameBox.Text;
+				string infix = infixBox.Text;
+				string lastName = lastNameBox.Text;
+				string place = placeBox.Text;
+				string street = streetBox.Text;
+				string housenum = housenumBox.Text;
+				string postal = postalBox.Text;
+				string phone = phoneBox.Text;
+				DateTime birth = birthBox.Value;
 
-				using (SqlConnection connection = new SqlConnection(_connectionString))
+				bool hasLowercase = password.Any(char.IsLower);
+				bool hasUppercase = password.Any(char.IsUpper);
+				bool hasDigit = password.Any(char.IsDigit);
+				bool hasSpecial = password.Any(ch => !char.IsLetterOrDigit(ch));
+				bool hasLength = password.Length >= 8;
+
+				if (hasLowercase && hasUppercase && hasDigit && hasSpecial && hasLength)
 				{
-					using (SqlCommand command = new SqlCommand(query, connection))
+					if (birthBox.Value > DateTime.Today.AddYears(-18))
 					{
-						connection.Open();
-						command.Parameters.AddWithValue("@Email", email);
-						command.Parameters.AddWithValue("@Password", password);
-						command.Parameters.AddWithValue("@FirstName", firstName);
-						command.Parameters.AddWithValue("@Infix", infix);
-						command.Parameters.AddWithValue("@LastName", lastName);
-						command.Parameters.AddWithValue("@Place", place);
-						command.Parameters.AddWithValue("@Street", street);
-						command.Parameters.AddWithValue("@Housenumber", housenum);
-						command.Parameters.AddWithValue("@Postal", postal);
-						command.Parameters.AddWithValue("@Phone", phone);
-						command.Parameters.AddWithValue("@Birthdate", birth);
-						try
-						{
-							command.ExecuteNonQuery();
-							MessageBox.Show(Translation.account_created);
-							connection.Close();
-							this.Close();
-						}
-						catch (SqlException ex) when (ex.Number == 2601)
-						{
-							MessageBox.Show(Translation.email_used_message, Translation.error,
-								MessageBoxButtons.OK, MessageBoxIcon.Error);
-						}
-						catch (SqlException ex) when (ex.Number == 2628)
-						{
-							MessageBox.Show("Password too long, maximum length is 50 characters", "Password too long",
-								MessageBoxButtons.OK, MessageBoxIcon.Error);
-						}
-						catch (Exception ex)
-						{
-							MessageBox.Show(Translation.error + Translation.semicolon + ex, Translation.error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-						}
+						MessageBox.Show(Translation.minimum_age_message, Translation.minimum_age_caption,
+							MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return;
+					}
 
-						connection.Close();
+					string query =
+						"INSERT INTO Users (Email, Password, FirstName, Infix, LastName, Place, Street, Housenum, Postal, Phone, Birthday) " +
+						"VALUES (@Email, @Password, @FirstName, @Infix, @LastName, @Place, @Street, @Housenumber, @Postal, @Phone, @Birthdate)";
+
+					using (SqlConnection connection = new SqlConnection(_connectionString))
+					{
+						using (SqlCommand command = new SqlCommand(query, connection))
+						{
+							connection.Open();
+							command.Parameters.AddWithValue("@Email", email);
+							command.Parameters.AddWithValue("@Password", password);
+							command.Parameters.AddWithValue("@FirstName", firstName);
+							command.Parameters.AddWithValue("@Infix", infix);
+							command.Parameters.AddWithValue("@LastName", lastName);
+							command.Parameters.AddWithValue("@Place", place);
+							command.Parameters.AddWithValue("@Street", street);
+							command.Parameters.AddWithValue("@Housenumber", housenum);
+							command.Parameters.AddWithValue("@Postal", postal);
+							command.Parameters.AddWithValue("@Phone", phone);
+							command.Parameters.AddWithValue("@Birthdate", birth);
+							try
+							{
+								command.ExecuteNonQuery();
+								MessageBox.Show(Translation.account_created);
+								connection.Close();
+								this.Close();
+							}
+							catch (SqlException ex) when (ex.Number == 2601)
+							{
+								MessageBox.Show(Translation.email_used_message, Translation.error,
+									MessageBoxButtons.OK, MessageBoxIcon.Error);
+							}
+							catch (SqlException ex) when (ex.Number == 2628)
+							{
+								MessageBox.Show(Translation.too_long_password, Translation.too_long_caption,
+									MessageBoxButtons.OK, MessageBoxIcon.Error);
+							}
+							catch (Exception ex)
+							{
+								MessageBox.Show(Translation.error + Translation.semicolon + ex, Translation.error,
+									MessageBoxButtons.OK, MessageBoxIcon.Error);
+							}
+
+							connection.Close();
+						}
 					}
 				}
+
+				else
+				{
+					string message = "Het wachtwoord moet nog aan de volgende eisen voldoen:\n";
+					if (!hasLowercase)
+					{
+						message = message + "- Minimaal 1 kleine letter\n";
+					}
+
+					if (!hasUppercase)
+					{
+						message = message + "- Minimaal 1 hoofdletter\n";
+					}
+
+					if (!hasDigit)
+					{
+						message = message + "- Minimaal 1 cijfer\n";
+					}
+
+					if (!hasSpecial)
+					{
+						message = message + "- Minimaal 1 speciaal teken\n";
+					}
+
+					if (!hasLength)
+					{
+						message = message + "- Minimaal 8 tekens lang\n";
+					}
+
+					MessageBox.Show(message, "Wachtwoord voldoet niet", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+				}
 			}
-			else
+			// else
 			{
-				string message = "Het wachtwoord moet nog aan de volgende eisen voldoen:\n";
-				if (!hasLowercase)
+				MessageBox.Show(Translation.email_invalid_message, Translation.email_invalid_caption,
+					MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+		private void housenumBox_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!(char.IsDigit(e.KeyChar) || e.KeyChar == ' ' || char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+			{
+				e.Handled = true;
+			}
+
+			string currentText = housenumBox.Text;
+			if (!char.IsControl(e.KeyChar))
+			{
+				if (e.KeyChar == (char)Keys.Back)
 				{
-					message = message + "- Minimaal 1 kleine letter\n";
+					if (currentText.Length > 0)
+					{
+						currentText = currentText.Substring(0, currentText.Length - 1);
+					}
 				}
-				if (!hasUppercase)
+				else
 				{
-					message = message + "- Minimaal 1 hoofdletter\n";
+					currentText += e.KeyChar.ToString();
 				}
-				if (!hasDigit)
+			}
+
+			if (currentText != housenumBox.Text)
+			{
+				if (!Regex.IsMatch(currentText, @"^\d+[a-zA-Z]?$"))
 				{
-					message = message + "- Minimaal 1 cijfer\n";
+					e.Handled = true;
 				}
-				if (!hasSpecial)
-				{
-					message = message + "- Minimaal 1 speciaal teken\n";
-				}
-				if (!hasLength)
-				{
-					message = message + "- Minimaal 8 tekens lang\n";
-				}
-				
-				MessageBox.Show(message, "Wachtwoord voldoet niet", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 			}
 		}
 	}

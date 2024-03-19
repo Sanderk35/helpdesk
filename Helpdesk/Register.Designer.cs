@@ -107,10 +107,12 @@
 			housenumBox.Size = new Size(55, 27);
 			housenumBox.TabIndex = 6;
 			housenumBox.TextChanged += textUpdate;
+			housenumBox.KeyPress += housenumBox_KeyPress;
 			// 
 			// postalBox
 			// 
 			postalBox.Location = new Point(296, 137);
+			postalBox.MaxLength = 6;
 			postalBox.Name = "postalBox";
 			postalBox.PlaceholderText = Translation.postal_text;
 			postalBox.Size = new Size(62, 27);
@@ -173,9 +175,9 @@
 			birthLabel.AutoSize = true;
 			birthLabel.Location = new Point(235, 168);
 			birthLabel.Name = "birthLabel";
-			birthLabel.Size = new Size(115, 20);
+			birthLabel.Size = new Size(70, 20);
 			birthLabel.TabIndex = 13;
-			birthLabel.Text = Translation.birth_text;
+			birthLabel.Text = "Birthdate";
 			// 
 			// Register
 			// 
@@ -203,7 +205,7 @@
 			MinimizeBox = false;
 			Name = "Register";
 			StartPosition = FormStartPosition.CenterParent;
-			Text = Translation.register_title;
+			Text = "Register";
 			ResumeLayout(false);
 			PerformLayout();
 		}

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design.Serialization;
+using System.Globalization;
 using System.Windows.Forms.VisualStyles;
 
 namespace Helpdesk.Admin
@@ -18,9 +19,13 @@ namespace Helpdesk.Admin
 
 		public void LoadData()
 		{
+			CultureInfo cultureInfo = CultureInfo.CurrentCulture;
 			staffView.Items.Clear();
 			SqlConnection connection = new SqlConnection(_connectionString);
-			string query = "SELECT * FROM Staff WHERE Role != 2";
+			string query =
+				"SELECT St.id, email, firstName, infix, lastName, password, role, specialism, englishSpecialism FROM Staff St " +
+				"JOIN Specialism Sp ON specialismId = Sp.id " +
+				"WHERE Role != 2";
 
 			SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
 			DataTable dataTable = new DataTable();
@@ -38,24 +43,16 @@ namespace Helpdesk.Admin
 					item.SubItems.Add(Translation.IT_staff);
 				else
 					item.SubItems.Add(Translation.helpdesk_staff);
-
-				if ((int)row["Specialism"] == 0)
-					item.SubItems.Add(Translation.none);
-				else if ((int)row["Specialism"] == 1)
-					item.SubItems.Add("Tv");
-				else if ((int)row["Specialism"] == 2)
-					item.SubItems.Add("Internet");
-				else if ((int)row["Specialism"] == 3)
-					item.SubItems.Add(Translation.fixed_telephony);
-				else if ((int)row["Specialism"] == 4)
-					item.SubItems.Add(Translation.mobile_telephony);
-				else if ((int)row["Specialism"] == 5)
-					item.SubItems.Add(Translation.invoices);
-				else if ((int)row["Specialism"] == 6)
-					item.SubItems.Add(Translation.prices);
-				else if ((int)row["Specialism"] == 7)
-					item.SubItems.Add(Translation.other);
-				item.SubItems.Add(row["ID"].ToString());
+				if (cultureInfo.Name == "nl-NL")
+				{
+					item.SubItems.Add(row["Specialism"].ToString());
+				}
+				else
+				{
+					item.SubItems.Add(row["EnglishSpecialism"].ToString());
+				}
+				
+				item.Tag = row["id"].ToString();
 				staffView.Items.Add(item);
 			}
 			connection.Close();
@@ -64,7 +61,6 @@ namespace Helpdesk.Admin
 			staffView.Columns[2].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
 			staffView.Columns[3].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
 			staffView.Columns[4].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-			staffView.Columns[5].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
 		}
 
 		private void StaffScreen_FormClosed(object sender, FormClosedEventArgs e)
@@ -86,7 +82,7 @@ namespace Helpdesk.Admin
 
 		private void editButton_Click(object sender, EventArgs e)
 		{
-			AddEditStaff addEditStaff = new AddEditStaff(true, int.Parse(staffView.SelectedItems[0].SubItems[6].Text));
+			AddEditStaff addEditStaff = new AddEditStaff(true, int.Parse(staffView.SelectedItems[0].Tag.ToString()));
 			addEditStaff.ShowDialog();
 			LoadData();
 		}
@@ -112,7 +108,7 @@ namespace Helpdesk.Admin
 			{
 				SqlConnection connection = new SqlConnection(_connectionString);
 				SqlCommand command = new SqlCommand("DELETE FROM Staff WHERE ID = @id", connection);
-				command.Parameters.AddWithValue("@id", int.Parse(staffView.SelectedItems[0].SubItems[6].Text));
+				command.Parameters.AddWithValue("@id", int.Parse(staffView.SelectedItems[0].Tag.ToString()));
 				connection.Open();
 				command.ExecuteNonQuery();
 				connection.Close();

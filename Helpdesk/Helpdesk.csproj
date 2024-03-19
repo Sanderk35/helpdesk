@@ -20,6 +20,9 @@
       <DependentUpon>Translation.resx</DependentUpon>
     </Compile>
     <Compile Remove="GlobalVariables.cs" />
+    <Compile Update="Tickets\TicketsOverviewIT.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 

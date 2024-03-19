@@ -132,6 +132,15 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Duplicate email.
+        /// </summary>
+        internal static string duplicate_email {
+            get {
+                return ResourceManager.GetString("duplicate_email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Staff.
         /// </summary>
         internal static string edit_staff {
@@ -150,6 +159,24 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E-mail doesn&apos;t exist.
+        /// </summary>
+        internal static string email_invalid_caption {
+            get {
+                return ResourceManager.GetString("email_invalid_caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This e-mail doesn&apos;t exist, try again with a different email..
+        /// </summary>
+        internal static string email_invalid_message {
+            get {
+                return ResourceManager.GetString("email_invalid_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail.
         /// </summary>
         internal static string email_text {
@@ -159,7 +186,7 @@ namespace Helpdesk {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This email is already used.
+        ///   Looks up a localized string similar to This e-mail is already used.
         /// </summary>
         internal static string email_used_message {
             get {
@@ -303,7 +330,7 @@ namespace Helpdesk {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Username or password incorrect, try again.
+        ///   Looks up a localized string similar to E-mail or password incorrect, try again.
         /// </summary>
         internal static string login_failed_message {
             get {
@@ -620,11 +647,39 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There already exists a staff member with this email address.
+        ///Please use a different email address..
+        /// </summary>
+        internal static string staffmail_exists {
+            get {
+                return ResourceManager.GetString("staffmail_exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Street.
         /// </summary>
         internal static string street_text {
             get {
                 return ResourceManager.GetString("street_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password too long.
+        /// </summary>
+        internal static string too_long_caption {
+            get {
+                return ResourceManager.GetString("too_long_caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password too long, maximum length is 50 characters.
+        /// </summary>
+        internal static string too_long_password {
+            get {
+                return ResourceManager.GetString("too_long_password", resourceCulture);
             }
         }
     }

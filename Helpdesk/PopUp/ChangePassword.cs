@@ -2,8 +2,8 @@
 {
 	public partial class ChangePassword : Form
 	{
-		public int id;
-		public ChangePassword(int id)
+		public long id;
+		public ChangePassword(long id)
 		{
 			InitializeComponent();
 			this.id = id;
@@ -45,7 +45,7 @@
 					}
 					catch (SqlException ex) when (ex.Number == 2628)
 					{
-						MessageBox.Show("Password too long, maximum length is 50 characters", "Password too long",
+						MessageBox.Show(Translation.too_long_password, Translation.too_long_caption,
 							MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 				}
@@ -72,13 +72,25 @@
 					{
 						message = message + Translation.password_eight_characters + "\n";
 					}
-				
+
 					MessageBox.Show(message, Translation.password_doesnt_meet, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 				}
 			}
 			else
 			{
 				MessageBox.Show(Translation.password_no_match);
+			}
+		}
+
+		private void newPasswordBox_TextChanged(object sender, EventArgs e)
+		{
+			if (newPasswordBox.Text.Length > 0)
+			{
+				changePasswordButton.Enabled = true;
+			}
+			else
+			{
+				changePasswordButton.Enabled = false;
 			}
 		}
 	}
