@@ -30,7 +30,7 @@
 		{
 			components = new System.ComponentModel.Container();
 			ListViewGroup listViewGroup1 = new ListViewGroup("Your claimed tickets", HorizontalAlignment.Left);
-			ListViewGroup listViewGroup2 = new ListViewGroup("Open tickets", HorizontalAlignment.Left);
+			ListViewGroup listViewGroup2 = new ListViewGroup(Translation.available_tickets, HorizontalAlignment.Left);
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TicketsOverviewIT));
 			openButton = new Button();
 			ticketList = new ListView();
@@ -54,7 +54,7 @@
 			// 
 			ticketList.Columns.AddRange(new ColumnHeader[] { name });
 			ticketList.FullRowSelect = true;
-			listViewGroup1.Header = Translation.claimed_tickets;
+			listViewGroup1.Header = "Your claimed tickets";
 			listViewGroup1.Name = "claimedGroup";
 			listViewGroup2.Header = Translation.available_tickets;
 			listViewGroup2.Name = "openGroup";
@@ -109,6 +109,7 @@
 			Controls.Add(openButton);
 			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "TicketsOverviewIT";
+			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Tickets";
 			FormClosed += TicketsOverview_FormClosed;
 			Load += TicketsOverview_Load;

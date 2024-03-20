@@ -114,7 +114,8 @@
 			Controls.Add(createButton);
 			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "TicketsOverview";
-			Text = Translation.ticket_window;
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "Your tickets";
 			FormClosed += TicketsOverview_FormClosed;
 			Load += TicketsOverview_Load;
 			ResumeLayout(false);

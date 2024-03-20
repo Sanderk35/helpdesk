@@ -69,7 +69,9 @@ namespace Helpdesk.Customer
 
 		private void createButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Nu zou het ticket creatie venster openen, maar die functie is nog niet geïmplementeerd.");
+			PopUp.TicketCreation ticketCreation = new PopUp.TicketCreation(_helpdeskId, true);
+			ticketCreation.ShowDialog();
+			refresh();
 		}
 
 		private void openButton_Click(object sender, EventArgs e)

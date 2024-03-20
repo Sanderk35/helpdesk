@@ -7,6 +7,9 @@
     <Compile Update="Admin\StaffScreen.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="PopUp\TicketCreation.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Tickets\TicketOverviewHelpdesk.cs">
       <SubType>Form</SubType>
     </Compile>

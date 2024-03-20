@@ -132,6 +132,7 @@
 			Controls.Add(createButton);
 			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "TicketsOverviewHelpdesk";
+			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Tickets";
 			FormClosed += TicketsOverview_FormClosed;
 			Load += TicketsOverview_Load;
