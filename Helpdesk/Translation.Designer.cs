@@ -711,6 +711,15 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ticket created.
+        /// </summary>
+        internal static string ticket_created {
+            get {
+                return ResourceManager.GetString("ticket_created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your tickets.
         /// </summary>
         internal static string ticket_window {

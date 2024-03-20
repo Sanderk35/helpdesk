@@ -242,4 +242,7 @@ Gebruik een andere alstublieft.</value>
     <data name="available_tickets" xml:space="preserve">
         <value>Openstaande tickets</value>
     </data>
+    <data name="ticket_created" xml:space="preserve">
+        <value>Ticket is aangemaakt</value>
+    </data>
 </root>

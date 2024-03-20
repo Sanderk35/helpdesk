@@ -249,4 +249,7 @@ Please use a different email address.</value>
     <data name="available_tickets" xml:space="preserve">
         <value>Available tickets</value>
     </data>
+    <data name="ticket_created" xml:space="preserve">
+        <value>Ticket created</value>
+    </data>
 </root>

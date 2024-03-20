@@ -76,7 +76,7 @@ namespace Helpdesk.PopUp
 				command.Connection.Close();
 			}
 			
-			MessageBox.Show("Ticket created");
+			MessageBox.Show(Translation.ticket_created);
 			Close();
 		}
 	}
