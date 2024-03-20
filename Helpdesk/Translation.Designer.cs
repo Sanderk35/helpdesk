@@ -87,6 +87,15 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available tickets.
+        /// </summary>
+        internal static string available_tickets {
+            get {
+                return ResourceManager.GetString("available_tickets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Birthdate.
         /// </summary>
         internal static string birth_text {
@@ -114,11 +123,47 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your claimed tickets.
+        /// </summary>
+        internal static string claimed_tickets {
+            get {
+                return ResourceManager.GetString("claimed_tickets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat.
         /// </summary>
         internal static string confirm_text {
             get {
                 return ResourceManager.GetString("confirm_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        internal static string create {
+            get {
+                return ResourceManager.GetString("create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create ticket.
+        /// </summary>
+        internal static string create_title {
+            get {
+                return ResourceManager.GetString("create_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer number.
+        /// </summary>
+        internal static string customer_number {
+            get {
+                return ResourceManager.GetString("customer_number", resourceCulture);
             }
         }
         
@@ -662,6 +707,24 @@ namespace Helpdesk {
         internal static string street_text {
             get {
                 return ResourceManager.GetString("street_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your tickets.
+        /// </summary>
+        internal static string ticket_window {
+            get {
+                return ResourceManager.GetString("ticket_window", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        internal static string title {
+            get {
+                return ResourceManager.GetString("title", resourceCulture);
             }
         }
         

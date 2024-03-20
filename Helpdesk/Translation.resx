@@ -228,4 +228,25 @@ Please use a different email address.</value>
     <data name="email_invalid_caption" xml:space="preserve">
         <value>E-mail doesn't exist</value>
     </data>
+    <data name="title" xml:space="preserve">
+        <value>Title</value>
+    </data>
+    <data name="customer_number" xml:space="preserve">
+        <value>Customer number</value>
+    </data>
+    <data name="create" xml:space="preserve">
+        <value>Create</value>
+    </data>
+    <data name="create_title" xml:space="preserve">
+        <value>Create ticket</value>
+    </data>
+    <data name="ticket_window" xml:space="preserve">
+        <value>Your tickets</value>
+    </data>
+    <data name="claimed_tickets" xml:space="preserve">
+        <value>Your claimed tickets</value>
+    </data>
+    <data name="available_tickets" xml:space="preserve">
+        <value>Available tickets</value>
+    </data>
 </root>

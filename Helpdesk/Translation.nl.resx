@@ -221,4 +221,25 @@ Gebruik een andere alstublieft.</value>
     <data name="email_invalid_caption" xml:space="preserve">
         <value>Email bestaat niet</value>
     </data>
+    <data name="title" xml:space="preserve">
+        <value>Titel</value>
+    </data>
+    <data name="customer_number" xml:space="preserve">
+        <value>Klantennummer</value>
+    </data>
+    <data name="create" xml:space="preserve">
+        <value>Aanmaken</value>
+    </data>
+    <data name="create_title" xml:space="preserve">
+        <value>Ticket aanmaken</value>
+    </data>
+    <data name="ticket_window" xml:space="preserve">
+        <value>Jouw tickets</value>
+    </data>
+    <data name="claimed_tickets" xml:space="preserve">
+        <value>Jouw geclaimde tickets</value>
+    </data>
+    <data name="available_tickets" xml:space="preserve">
+        <value>Openstaande tickets</value>
+    </data>
 </root>

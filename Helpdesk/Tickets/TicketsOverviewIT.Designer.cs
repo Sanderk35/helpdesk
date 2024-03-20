@@ -54,9 +54,9 @@
 			// 
 			ticketList.Columns.AddRange(new ColumnHeader[] { name });
 			ticketList.FullRowSelect = true;
-			listViewGroup1.Header = "Your claimed tickets";
+			listViewGroup1.Header = Translation.claimed_tickets;
 			listViewGroup1.Name = "claimedGroup";
-			listViewGroup2.Header = "Open tickets";
+			listViewGroup2.Header = Translation.available_tickets;
 			listViewGroup2.Name = "openGroup";
 			ticketList.Groups.AddRange(new ListViewGroup[] { listViewGroup1, listViewGroup2 });
 			ticketList.HeaderStyle = ColumnHeaderStyle.Nonclickable;

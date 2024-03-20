@@ -44,7 +44,7 @@
 			createButton.Name = "createButton";
 			createButton.Size = new Size(112, 40);
 			createButton.TabIndex = 0;
-			createButton.Text = "Create";
+			createButton.Text = Translation.create;
 			createButton.UseVisualStyleBackColor = true;
 			createButton.Click += createButton_Click;
 			// 
@@ -114,7 +114,7 @@
 			Controls.Add(createButton);
 			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "TicketsOverview";
-			Text = "Your tickets";
+			Text = Translation.ticket_window;
 			FormClosed += TicketsOverview_FormClosed;
 			Load += TicketsOverview_Load;
 			ResumeLayout(false);

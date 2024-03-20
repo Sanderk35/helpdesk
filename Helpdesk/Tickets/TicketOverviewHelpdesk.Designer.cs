@@ -46,7 +46,7 @@
 			createButton.Name = "createButton";
 			createButton.Size = new Size(112, 40);
 			createButton.TabIndex = 0;
-			createButton.Text = "Create";
+			createButton.Text = Translation.create;
 			createButton.UseVisualStyleBackColor = true;
 			createButton.Click += createButton_Click;
 			// 
@@ -87,7 +87,7 @@
 			// 
 			// customerNumber
 			// 
-			customerNumber.Text = "Customer Number";
+			customerNumber.Text = Translation.customer_number;
 			customerNumber.Width = 150;
 			// 
 			// imageList
@@ -115,7 +115,7 @@
 			searchBox.Location = new Point(12, 6);
 			searchBox.MaxLength = 10;
 			searchBox.Name = "searchBox";
-			searchBox.PlaceholderText = "Customer Number";
+			searchBox.PlaceholderText = Translation.customer_number;
 			searchBox.Size = new Size(129, 27);
 			searchBox.TabIndex = 6;
 			searchBox.TextChanged += searchBox_TextChanged;
@@ -132,7 +132,7 @@
 			Controls.Add(createButton);
 			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "TicketsOverviewHelpdesk";
-			Text = "Your tickets";
+			Text = "Tickets";
 			FormClosed += TicketsOverview_FormClosed;
 			Load += TicketsOverview_Load;
 			ResumeLayout(false);
