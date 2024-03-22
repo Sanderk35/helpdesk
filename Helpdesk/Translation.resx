@@ -252,4 +252,20 @@ Please use a different email address.</value>
     <data name="ticket_created" xml:space="preserve">
         <value>Ticket created</value>
     </data>
+    <data name="ticket_closing_desc" xml:space="preserve">
+        <value>Are you sure the ticket is closed?</value>
+    </data>
+    <data name="ticket_closing_title" xml:space="preserve">
+        <value>Closing ticket</value>
+    </data>
+    <data name="pending_closure" xml:space="preserve">
+        <value>The IT specialist says that "{0}" is ready to be closed.
+Can you confirm that?</value>
+    </data>
+    <data name="pending_closure_title" xml:space="preserve">
+        <value>Pending closure</value>
+    </data>
+    <data name="close" xml:space="preserve">
+        <value>Close</value>
+    </data>
 </root>

@@ -37,12 +37,13 @@
 			name = new ColumnHeader();
 			imageList = new ImageList(components);
 			refreshButton = new Button();
+			closeButton = new Button();
 			SuspendLayout();
 			// 
 			// openButton
 			// 
 			openButton.Enabled = false;
-			openButton.Location = new Point(259, 334);
+			openButton.Location = new Point(173, 334);
 			openButton.Name = "openButton";
 			openButton.Size = new Size(98, 40);
 			openButton.TabIndex = 1;
@@ -99,11 +100,23 @@
 			refreshButton.UseVisualStyleBackColor = true;
 			refreshButton.Click += refreshButton_Click;
 			// 
+			// closeButton
+			// 
+			closeButton.Enabled = false;
+			closeButton.Location = new Point(344, 334);
+			closeButton.Name = "closeButton";
+			closeButton.Size = new Size(98, 40);
+			closeButton.TabIndex = 6;
+			closeButton.Text = Translation.close;
+			closeButton.UseVisualStyleBackColor = true;
+			closeButton.Click += closeButton_Click;
+			// 
 			// TicketsOverviewIT
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(616, 383);
+			Controls.Add(closeButton);
 			Controls.Add(refreshButton);
 			Controls.Add(ticketList);
 			Controls.Add(openButton);
@@ -122,5 +135,6 @@
 		private ColumnHeader name;
 		private ImageList imageList;
 		private Button refreshButton;
+		private Button closeButton;
 	}
 }

@@ -245,4 +245,19 @@ Gebruik een andere alstublieft.</value>
     <data name="ticket_created" xml:space="preserve">
         <value>Ticket is aangemaakt</value>
     </data>
+    <data name="ticket_closing_desc" xml:space="preserve">
+        <value>Weet je zeker dat de ticket is gesloten?</value>
+    </data>
+    <data name="ticket_closing_title" xml:space="preserve">
+        <value>Ticket sluiten</value>
+    </data>
+    <data name="pending_closure" xml:space="preserve">
+        <value>De ICT'er zegt dat "{0}" klaar is om gesloten te worden. Kun je dit bevestigen?</value>
+    </data>
+    <data name="pending_closure_title" xml:space="preserve">
+        <value>Afwachting van sluiting</value>
+    </data>
+    <data name="close" xml:space="preserve">
+        <value>Sluiten</value>
+    </data>
 </root>

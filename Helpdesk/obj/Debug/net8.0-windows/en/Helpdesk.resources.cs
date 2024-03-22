@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Helpdesk")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute(" ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2fff7deb3122362d7dcc636b7429f740fd5c0afa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a9aac275e00b8078a514f924da1fe310849f5fb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Helpdesk")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Helpdesk")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

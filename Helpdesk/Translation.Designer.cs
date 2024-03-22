@@ -132,6 +132,15 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string close {
+            get {
+                return ResourceManager.GetString("close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat.
         /// </summary>
         internal static string confirm_text {
@@ -546,6 +555,25 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The IT specialist says that &quot;{0}&quot; is ready to be closed.
+        ///Can you confirm that?.
+        /// </summary>
+        internal static string pending_closure {
+            get {
+                return ResourceManager.GetString("pending_closure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pending closure.
+        /// </summary>
+        internal static string pending_closure_title {
+            get {
+                return ResourceManager.GetString("pending_closure_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phonenumber.
         /// </summary>
         internal static string phone_text {
@@ -707,6 +735,24 @@ namespace Helpdesk {
         internal static string street_text {
             get {
                 return ResourceManager.GetString("street_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure the ticket is closed?.
+        /// </summary>
+        internal static string ticket_closing_desc {
+            get {
+                return ResourceManager.GetString("ticket_closing_desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Closing ticket.
+        /// </summary>
+        internal static string ticket_closing_title {
+            get {
+                return ResourceManager.GetString("ticket_closing_title", resourceCulture);
             }
         }
         

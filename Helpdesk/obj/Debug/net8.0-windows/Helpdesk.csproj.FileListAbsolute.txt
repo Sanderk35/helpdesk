@@ -43,6 +43,6 @@ C:\School\Helpdesk\Helpdesk\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Customer.TicketsOverview.resources
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Customer.TicketsOverviewHelpdesk.resources
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.Customer.TicketsOverviewIT.resources
+C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.PopUp.TicketCreation.resources
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\en\Helpdesk.resources.cs
 C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\nl\Helpdesk.resources.cs
-C:\School\Helpdesk\Helpdesk\obj\Debug\net8.0-windows\Helpdesk.PopUp.TicketCreation.resources

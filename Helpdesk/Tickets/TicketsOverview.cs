@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Helpdesk.Customer
 {
@@ -28,7 +29,7 @@ namespace Helpdesk.Customer
 		private void refresh()
 		{
 			ticketList.Items.Clear();
-			string query = "SELECT title, state FROM Tickets WHERE userId = @userId";
+			string query = "SELECT id, title, pendingClosure FROM Tickets WHERE userId = @userId";
 
 			DataTable dataTable = new DataTable();
 			using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -41,16 +42,46 @@ namespace Helpdesk.Customer
 
 			foreach (DataRow row in dataTable.Rows)
 			{
+				if ((bool)row["pendingClosure"])
+				{
+					DialogResult result = MessageBox.Show(string.Format(Translation.pending_closure, row["title"]), Translation.pending_closure_title, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+					if (result == DialogResult.Yes)
+					{
+						query = "UPDATE Tickets SET state = 2, pendingClosure = 0 WHERE id = @id";
+						using (SqlConnection connection = new SqlConnection(_connectionString))
+						{
+							connection.Open();
+							SqlCommand command = new SqlCommand(query, connection);
+							command.Parameters.AddWithValue("@id", (long)row["id"]);
+							command.ExecuteNonQuery();
+						}
+					}
+				}
+			}
+			
+			query = "SELECT title, state FROM Tickets WHERE userId = @userId ORDER BY state";
+
+			dataTable = new DataTable();
+			using (SqlConnection connection = new SqlConnection(_connectionString))
+			{
+				connection.Open();
+				SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+				adapter.SelectCommand.Parameters.AddWithValue("@userId", _userId);
+				adapter.Fill(dataTable);
+			}
+
+			foreach (DataRow row in dataTable.Rows)
+			{
 				ListViewItem item = new ListViewItem(row["title"].ToString());
-				if ((int)row["state"] == 0)
+				if ((int)row["state"] == 1)
 					item.ImageKey = "Open.png";
-				else if ((int)row["state"] == 1)
+				else if ((int)row["state"] == 0)
 					item.ImageKey = "Answered.png";
 				else if ((int)row["state"] == 2)
 					item.ImageKey = "Closed.png";
 				ticketList.Items.Add(item);
 			}
-			ticketList.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.None);
+			ticketList.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
 		}
 
 
@@ -90,7 +121,14 @@ namespace Helpdesk.Customer
 		{
 			if (ticketList.SelectedItems.Count > 0)
 			{
-				openButton.Enabled = true;
+				if (ticketList.SelectedItems[0].ImageKey == "Closed.png")
+				{
+					openButton.Enabled = false;
+				}
+				else
+				{
+					openButton.Enabled = true;
+				}
 			}
 			else
 			{

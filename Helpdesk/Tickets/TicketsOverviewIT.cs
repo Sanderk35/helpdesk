@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Helpdesk.Customer
+﻿namespace Helpdesk.Customer
 {
 	public partial class TicketsOverviewIT : Form
 	{
@@ -31,7 +21,7 @@ namespace Helpdesk.Customer
 		private void refresh()
 		{
 			ticketList.Items.Clear();
-			string query = "SELECT id, title, state, ictId FROM Tickets WHERE ictId = @staffId AND specialismId = @specialism OR ictId IS NULL AND specialismId = @specialism;";
+			string query = "SELECT id, title, state, ictId FROM Tickets WHERE ictId = @staffId AND specialismId = @specialism OR ictId IS NULL AND specialismId = @specialism ORDER BY state";
 
 			DataTable dataTable = new DataTable();
 			using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -56,9 +46,9 @@ namespace Helpdesk.Customer
 				else
 				{
 					ListViewItem item = new ListViewItem(row["title"].ToString());
-					if ((int)row["state"] == 1)
+					if ((int)row["state"] == 0)
 						item.ImageKey = "Open.png";
-					else if ((int)row["state"] == 0)
+					else if ((int)row["state"] == 1)
 						item.ImageKey = "Answered.png";
 					else if ((int)row["state"] == 2)
 						item.ImageKey = "Closed.png";
@@ -119,6 +109,7 @@ namespace Helpdesk.Customer
 			if (ticketList.SelectedItems.Count > 0)
 			{
 				openButton.Enabled = true;
+				closeButton.Enabled = true;
 				if (ticketList.SelectedItems[0].Group == ticketList.Groups[0])
 				{
 					openButton.Text = "Open";
@@ -131,7 +122,39 @@ namespace Helpdesk.Customer
 			else
 			{
 				openButton.Enabled = false;
+				closeButton.Enabled = false;
 			}
 		}
+
+		private void closeButton_Click(object sender, EventArgs e)
+		{
+			long id = long.Parse(ticketList.SelectedItems[0].Tag.ToString());
+			DialogResult result = MessageBox.Show(Translation.ticket_closing_desc, Translation.ticket_closing_title, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+			if (result == DialogResult.Yes)
+			{
+				string query = "UPDATE Tickets SET pendingClosure = 1 WHERE id = @ticketId;";
+				using (SqlConnection connection = new SqlConnection(_connectionString))
+				{
+					using (SqlCommand command = new SqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@ticketId", id);
+						try
+						{
+							connection.Open();
+							command.ExecuteNonQuery();
+						}
+						catch (SqlException ex)
+						{
+							
+						}
+						finally
+						{
+							connection.Close();
+						}
+					}
+				}
+			}
+		}
+
 	}
 }
