@@ -99,7 +99,9 @@ namespace Helpdesk.Customer
 
 		private void TicketsOverview_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			Application.Exit();
+			Login login = new();
+			login.Show();
+			Hide();
 		}
 
 		private void ticketList_DrawItem(object sender, DrawListViewItemEventArgs e)

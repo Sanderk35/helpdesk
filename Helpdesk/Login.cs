@@ -14,7 +14,7 @@ namespace Helpdesk
 		public Login()
 		{
 			InitializeComponent();
-			
+
 			_connection = new SqlConnection(_connectionString);
 		}
 
@@ -22,9 +22,9 @@ namespace Helpdesk
 		{
 			string email = emailBox.Text;
 			string password = passwordBox.Text;
-			
+
 			string query = "SELECT id FROM Users WHERE Email = @Email AND Password = @Password";
-			
+
 			using (SqlCommand userSearchCommand = new SqlCommand(query, _connection))
 			{
 				_connection.Open();
@@ -44,12 +44,12 @@ namespace Helpdesk
 					{
 						userReader.Close();
 						query = "SELECT id, email, password, role, specialismId, firstTime FROM Staff WHERE Email = @Email AND Password = @Password";
-						
+
 						SqlCommand staffSearchCommand = new SqlCommand(query, _connection);
-						
+
 						staffSearchCommand.Parameters.AddWithValue("@Email", email);
 						staffSearchCommand.Parameters.AddWithValue("@Password", password);
-						
+
 						SqlDataReader staffReader = staffSearchCommand.ExecuteReader();
 
 						if (staffReader.HasRows)
@@ -81,7 +81,7 @@ namespace Helpdesk
 								ChangePassword changePassword = new ChangePassword(id);
 								changePassword.ShowDialog();
 							}
-							
+
 							if (role == 2) // Admin
 							{
 								StaffScreen staffScreen = new StaffScreen();
@@ -121,6 +121,11 @@ namespace Helpdesk
 		{
 			Register register = new Register();
 			register.ShowDialog();
+		}
+
+		private void Login_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Application.Exit();
 		}
 	}
 }

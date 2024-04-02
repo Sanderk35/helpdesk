@@ -86,9 +86,9 @@
 			registerLabel.Font = new Font("Segoe UI", 12F);
 			registerLabel.Location = new Point(63, 228);
 			registerLabel.Name = "registerLabel";
-			registerLabel.Size = new Size(182, 28);
+			registerLabel.Size = new Size(154, 28);
 			registerLabel.TabIndex = 4;
-			registerLabel.Text = Translation.no_account_question;
+			registerLabel.Text = "No account yet?";
 			// 
 			// registerButton
 			// 
@@ -123,7 +123,8 @@
 			MinimizeBox = false;
 			Name = "Login";
 			StartPosition = FormStartPosition.CenterScreen;
-			Text = Translation.login_page;
+			Text = "Log in";
+			FormClosed += Login_FormClosed;
 			((System.ComponentModel.ISupportInitialize)kpnLogo).EndInit();
 			ResumeLayout(false);
 			PerformLayout();

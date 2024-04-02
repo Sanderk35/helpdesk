@@ -55,8 +55,9 @@
 			// 
 			// categoryBox
 			// 
+			categoryBox.DropDownStyle = ComboBoxStyle.DropDownList;
 			categoryBox.FormattingEnabled = true;
-			categoryBox.Items.AddRange(new object[] { Translation.none, "Tv", "Internet", Translation.fixed_telephony, Translation.mobile_telephony, Translation.invoices, Translation.prices, Translation.other });
+			categoryBox.Items.AddRange(new object[] { "Tv", "Internet", "Fixed telephony", "Mobile telephony", "Invoices", "Prices", "Other" });
 			categoryBox.Location = new Point(12, 242);
 			categoryBox.Name = "categoryBox";
 			categoryBox.Size = new Size(218, 28);

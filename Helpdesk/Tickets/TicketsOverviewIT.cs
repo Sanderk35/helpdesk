@@ -1,4 +1,6 @@
-﻿namespace Helpdesk.Customer
+﻿using System.Globalization;
+
+namespace Helpdesk.Customer
 {
 	public partial class TicketsOverviewIT : Form
 	{
@@ -21,7 +23,9 @@
 		private void refresh()
 		{
 			ticketList.Items.Clear();
-			string query = "SELECT id, title, state, ictId FROM Tickets WHERE ictId = @staffId AND specialismId = @specialism OR ictId IS NULL AND specialismId = @specialism ORDER BY state";
+			string query = "SELECT T.id, title, description, state, ictId, creationDate, specialism, englishSpecialism FROM Tickets T " +
+			               "JOIN Specialism S ON specialismId = S.id " +
+			               "WHERE ictId = @staffId OR ictId IS NULL ORDER BY state";
 
 			DataTable dataTable = new DataTable();
 			using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -38,6 +42,12 @@
 				if (row["ictId"] == DBNull.Value)
 				{
 					ListViewItem item = new ListViewItem(row["title"].ToString());
+					item.SubItems.Add(row["description"].ToString());
+					if (CultureInfo.CurrentCulture.Name == "nl-NL")
+						item.SubItems.Add(row["specialism"].ToString());
+					else
+						item.SubItems.Add(row["englishSpecialism"].ToString());
+					item.SubItems.Add(row["creationDate"].ToString());
 					item.ImageKey = "Open.png";
 					item.Tag = row["id"].ToString();
 					item.Group = ticketList.Groups[1];
@@ -46,6 +56,12 @@
 				else
 				{
 					ListViewItem item = new ListViewItem(row["title"].ToString());
+					item.SubItems.Add(row["description"].ToString());
+					if (CultureInfo.CurrentCulture.Name == "nl-NL")
+						item.SubItems.Add(row["specialism"].ToString());
+					else
+						item.SubItems.Add(row["englishSpecialism"].ToString());
+					item.SubItems.Add(row["creationDate"].ToString());
 					if ((int)row["state"] == 0)
 						item.ImageKey = "Open.png";
 					else if ((int)row["state"] == 1)
@@ -57,7 +73,10 @@
 					ticketList.Items.Add(item);
 				}
 			}
-			ticketList.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.None);
+			ticketList.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+			ticketList.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+			ticketList.Columns[2].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+			ticketList.Columns[3].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
 		}
 
 		private void openButton_Click(object sender, EventArgs e)
@@ -86,7 +105,9 @@
 
 		private void TicketsOverview_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			Application.Exit();
+			Login login = new();
+			login.Show();
+			Hide();
 		}
 
 		private void ticketList_DrawItem(object sender, DrawListViewItemEventArgs e)

@@ -130,7 +130,9 @@
 			Controls.Add(ticketList);
 			Controls.Add(openButton);
 			Controls.Add(createButton);
+			FormBorderStyle = FormBorderStyle.FixedSingle;
 			Icon = (Icon)resources.GetObject("$this.Icon");
+			MaximizeBox = false;
 			Name = "TicketsOverviewHelpdesk";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Tickets";

@@ -35,6 +35,9 @@
 			openButton = new Button();
 			ticketList = new ListView();
 			name = new ColumnHeader();
+			description = new ColumnHeader();
+			specialism = new ColumnHeader();
+			creationDate = new ColumnHeader();
 			imageList = new ImageList(components);
 			refreshButton = new Button();
 			closeButton = new Button();
@@ -53,14 +56,13 @@
 			// 
 			// ticketList
 			// 
-			ticketList.Columns.AddRange(new ColumnHeader[] { name });
+			ticketList.Columns.AddRange(new ColumnHeader[] { name, description, specialism, creationDate });
 			ticketList.FullRowSelect = true;
 			listViewGroup1.Header = "Your claimed tickets";
 			listViewGroup1.Name = "claimedGroup";
 			listViewGroup2.Header = Translation.available_tickets;
 			listViewGroup2.Name = "openGroup";
 			ticketList.Groups.AddRange(new ListViewGroup[] { listViewGroup1, listViewGroup2 });
-			ticketList.HeaderStyle = ColumnHeaderStyle.Nonclickable;
 			ticketList.HideSelection = true;
 			ticketList.LargeImageList = imageList;
 			ticketList.Location = new Point(12, 12);
@@ -78,7 +80,19 @@
 			// name
 			// 
 			name.Text = "Ticket";
-			name.Width = 480;
+			name.Width = 120;
+			// 
+			// description
+			// 
+			description.Text = "Description";
+			// 
+			// specialism
+			// 
+			specialism.Text = "Specialisme";
+			// 
+			// creationDate
+			// 
+			creationDate.Text = "Date created";
 			// 
 			// imageList
 			// 
@@ -120,8 +134,11 @@
 			Controls.Add(refreshButton);
 			Controls.Add(ticketList);
 			Controls.Add(openButton);
+			FormBorderStyle = FormBorderStyle.FixedSingle;
 			Icon = (Icon)resources.GetObject("$this.Icon");
+			MaximizeBox = false;
 			Name = "TicketsOverviewIT";
+			RightToLeft = RightToLeft.No;
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Tickets";
 			FormClosed += TicketsOverview_FormClosed;
@@ -136,5 +153,8 @@
 		private ImageList imageList;
 		private Button refreshButton;
 		private Button closeButton;
+		private ColumnHeader description;
+		private ColumnHeader specialism;
+		private ColumnHeader creationDate;
 	}
 }

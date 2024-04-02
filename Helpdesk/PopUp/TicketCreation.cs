@@ -52,7 +52,7 @@ namespace Helpdesk.PopUp
 				command.Parameters.AddWithValue("@title", title);
 				command.Parameters.AddWithValue("@description", description);
 				command.Parameters.AddWithValue("@helpdeskId", id);
-				command.Parameters.AddWithValue("@specialismId", categoryId);
+				command.Parameters.AddWithValue("@specialismId", categoryId + 1);
 				command.Parameters.AddWithValue("@customerNumber", customerNumber);
 				
 				command.Connection.Open();

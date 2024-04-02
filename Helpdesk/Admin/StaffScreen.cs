@@ -65,7 +65,9 @@ namespace Helpdesk.Admin
 
 		private void StaffScreen_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			Application.Exit();
+			Login login = new();
+			login.Show();
+			Hide();
 		}
 
 		private void refreshButton_Click(object sender, EventArgs e)

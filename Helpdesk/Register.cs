@@ -106,6 +106,11 @@ namespace Helpdesk
 								MessageBox.Show(Translation.email_used_message, Translation.error,
 									MessageBoxButtons.OK, MessageBoxIcon.Error);
 							}
+							catch (SqlException ex) when (ex.Number == 2627)
+							{
+								MessageBox.Show(Translation.email_used_message, Translation.error,
+									MessageBoxButtons.OK, MessageBoxIcon.Error);
+							}
 							catch (SqlException ex) when (ex.Number == 2628)
 							{
 								MessageBox.Show(Translation.too_long_password, Translation.too_long_caption,
@@ -154,10 +159,10 @@ namespace Helpdesk
 				}
 			}
 			// else
-			{
-				MessageBox.Show(Translation.email_invalid_message, Translation.email_invalid_caption,
-					MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+			// {
+			// 	MessageBox.Show(Translation.email_invalid_message, Translation.email_invalid_caption,
+			// 		MessageBoxButtons.OK, MessageBoxIcon.Error);
+			// }
 		}
 		private void housenumBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
