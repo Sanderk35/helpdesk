@@ -12,7 +12,7 @@ namespace Helpdesk.PopUp
 {
 	public partial class TicketCreation : Form
 	{
-		public long id;
+		public long _id;
 
 		public bool _isHelpdesk;
 
@@ -22,7 +22,7 @@ namespace Helpdesk.PopUp
 		public TicketCreation(long id, bool isHelpdesk)
 		{
 			InitializeComponent();
-			this.id = id;
+			this._id = id;
 			_connection = new SqlConnection(_connectionString);
 			_isHelpdesk = isHelpdesk;
 
@@ -82,7 +82,7 @@ namespace Helpdesk.PopUp
 
 				command.Parameters.AddWithValue("@title", title);
 				command.Parameters.AddWithValue("@description", description);
-				command.Parameters.AddWithValue("@helpdeskId", id);
+				command.Parameters.AddWithValue("@helpdeskId", _id);
 				command.Parameters.AddWithValue("@specialismId", categoryId + 1);
 				command.Parameters.AddWithValue("@customerNumber", customerNumber);
 
@@ -99,8 +99,8 @@ namespace Helpdesk.PopUp
 
 				command.Parameters.AddWithValue("@title", title);
 				command.Parameters.AddWithValue("@description", description);
-				command.Parameters.AddWithValue("@userId", id);
-				command.Parameters.AddWithValue("@specialismId", categoryId);
+				command.Parameters.AddWithValue("@userId", _id);
+				command.Parameters.AddWithValue("@specialismId", categoryId + 1);
 
 				command.Connection.Open();
 				command.ExecuteNonQuery();

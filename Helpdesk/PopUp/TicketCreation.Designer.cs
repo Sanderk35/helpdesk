@@ -51,7 +51,7 @@
 			// 
 			categoryBox.DropDownStyle = ComboBoxStyle.DropDownList;
 			categoryBox.FormattingEnabled = true;
-			categoryBox.Items.AddRange(new object[] { "Tv", "Internet", "Fixed telephony", "Mobile telephony", "Invoices", "Prices", "Other" });
+			categoryBox.Items.AddRange(new object[] { "Tv", "Internet", Translation.fixed_telephony, Translation.mobile_telephony, Translation.invoices, Translation.prices, Translation.other });
 			categoryBox.Location = new Point(12, 242);
 			categoryBox.Name = "categoryBox";
 			categoryBox.Size = new Size(218, 28);
@@ -76,7 +76,7 @@
 			descriptionBox.MaxLength = 300;
 			descriptionBox.Multiline = true;
 			descriptionBox.Name = "descriptionBox";
-			descriptionBox.PlaceholderText = "Description (max 300 characters)";
+			descriptionBox.PlaceholderText = Translation.description;
 			descriptionBox.Size = new Size(253, 136);
 			descriptionBox.TabIndex = 4;
 			descriptionBox.TextChanged += Update;
@@ -98,11 +98,11 @@
 			// 
 			// nameHeader
 			// 
-			nameHeader.Text = "Name";
+			nameHeader.Text = Translation.name;
 			// 
 			// placeHeader
 			// 
-			placeHeader.Text = "Place";
+			placeHeader.Text = Translation.place_text;
 			// 
 			// TicketCreation
 			// 
@@ -120,7 +120,7 @@
 			MinimizeBox = false;
 			Name = "TicketCreation";
 			StartPosition = FormStartPosition.CenterParent;
-			Text = "Create ticket";
+			Text = Translation.create_title;
 			Load += TicketCreation_Load;
 			ResumeLayout(false);
 			PerformLayout();

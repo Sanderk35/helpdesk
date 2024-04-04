@@ -260,4 +260,31 @@ Gebruik een andere alstublieft.</value>
     <data name="close" xml:space="preserve">
         <value>Sluiten</value>
     </data>
+    <data name="close_the_app" xml:space="preserve">
+        <value>Wil je de applicatie sluiten?</value>
+    </data>
+    <data name="close_the_app_caption" xml:space="preserve">
+        <value>De applicatie sluiten?</value>
+    </data>
+    <data name="sender" xml:space="preserve">
+        <value>Verzonden door</value>
+    </data>
+    <data name="message" xml:space="preserve">
+        <value>Bericht</value>
+    </data>
+    <data name="time" xml:space="preserve">
+        <value>Tijd</value>
+    </data>
+    <data name="chat" xml:space="preserve">
+        <value>Chat (max 400 karakters)</value>
+    </data>
+    <data name="send" xml:space="preserve">
+        <value>Verzend</value>
+    </data>
+    <data name="description" xml:space="preserve">
+        <value>Beschrijving (max 300 karakters)</value>
+    </data>
+    <data name="name" xml:space="preserve">
+        <value>Naam</value>
+    </data>
 </root>

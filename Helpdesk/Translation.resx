@@ -268,4 +268,31 @@ Can you confirm that?</value>
     <data name="close" xml:space="preserve">
         <value>Close</value>
     </data>
+    <data name="close_the_app" xml:space="preserve">
+        <value>Do you want to close the application?</value>
+    </data>
+    <data name="close_the_app_caption" xml:space="preserve">
+        <value>Close the application?</value>
+    </data>
+    <data name="sender" xml:space="preserve">
+        <value>Send by</value>
+    </data>
+    <data name="message" xml:space="preserve">
+        <value>Message</value>
+    </data>
+    <data name="time" xml:space="preserve">
+        <value>Time</value>
+    </data>
+    <data name="chat" xml:space="preserve">
+        <value>Chat (max 400 characters)</value>
+    </data>
+    <data name="send" xml:space="preserve">
+        <value>Send</value>
+    </data>
+    <data name="description" xml:space="preserve">
+        <value>Description (max 300 characters)</value>
+    </data>
+    <data name="name" xml:space="preserve">
+        <value>Name</value>
+    </data>
 </root>
