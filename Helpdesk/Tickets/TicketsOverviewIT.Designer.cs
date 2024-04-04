@@ -141,7 +141,7 @@
 			RightToLeft = RightToLeft.No;
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Tickets";
-			FormClosed += TicketsOverview_FormClosed;
+			FormClosing += TicketsOverview_FormClosed;
 			Load += TicketsOverview_Load;
 			ResumeLayout(false);
 		}

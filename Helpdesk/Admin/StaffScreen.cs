@@ -9,15 +9,17 @@ namespace Helpdesk.Admin
 		public readonly string _connectionString = "Data Source=SANDERSLAPTOP\\SQLEXPRESS;Initial Catalog=Helpdesk;Integrated Security=True;";
 
 		private SqlConnection _connection;
+		
+		private bool _isClosing;
 		public StaffScreen()
 		{
 			InitializeComponent();
 			_connection = new SqlConnection(_connectionString);
 			LoadData();
-			this.refreshButton.Image = (Image)(new Bitmap(Properties.Resources.refresh, new Size(32, 32)));
+			refreshButton.Image = new Bitmap(Properties.Resources.refresh, new Size(32, 32));
 		}
 
-		public void LoadData()
+		private void LoadData()
 		{
 			CultureInfo cultureInfo = CultureInfo.CurrentCulture;
 			staffView.Items.Clear();
@@ -43,15 +45,10 @@ namespace Helpdesk.Admin
 					item.SubItems.Add(Translation.IT_staff);
 				else
 					item.SubItems.Add(Translation.helpdesk_staff);
-				if (cultureInfo.Name == "nl-NL")
-				{
-					item.SubItems.Add(row["Specialism"].ToString());
-				}
-				else
-				{
-					item.SubItems.Add(row["EnglishSpecialism"].ToString());
-				}
-				
+				item.SubItems.Add(cultureInfo.Name == "nl-NL"
+					? row["Specialism"].ToString()
+					: row["EnglishSpecialism"].ToString());
+
 				item.Tag = row["id"].ToString();
 				staffView.Items.Add(item);
 			}
@@ -63,11 +60,28 @@ namespace Helpdesk.Admin
 			staffView.Columns[4].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
 		}
 
-		private void StaffScreen_FormClosed(object sender, FormClosedEventArgs e)
+		private void StaffScreen_FormClosed(object sender, FormClosingEventArgs e)
 		{
-			Login login = new();
-			login.Show();
-			Hide();
+			if (!_isClosing)
+			{
+				DialogResult result = MessageBox.Show(Translation.close_the_app, Translation.close_the_app_caption, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
+
+				if (result == DialogResult.Yes)
+				{
+					_isClosing = true;
+					Application.Exit();
+				}
+				else if (result == DialogResult.No)
+				{
+					Login login = new();
+					login.Show();
+					Hide();
+				}
+				else if (result == DialogResult.Cancel)
+				{
+					e.Cancel = true;
+				}
+			}
 		}
 
 		private void refreshButton_Click(object sender, EventArgs e)

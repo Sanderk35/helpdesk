@@ -29,10 +29,12 @@
 		private void InitializeComponent()
 		{
 			titleBox = new TextBox();
-			customerNumberBox = new TextBox();
 			categoryBox = new ComboBox();
 			createButton = new Button();
 			descriptionBox = new TextBox();
+			customerNumberList = new ListView();
+			nameHeader = new ColumnHeader();
+			placeHeader = new ColumnHeader();
 			SuspendLayout();
 			// 
 			// titleBox
@@ -43,15 +45,7 @@
 			titleBox.PlaceholderText = Translation.title;
 			titleBox.Size = new Size(253, 27);
 			titleBox.TabIndex = 0;
-			// 
-			// customerNumberBox
-			// 
-			customerNumberBox.Location = new Point(307, 33);
-			customerNumberBox.MaxLength = 10;
-			customerNumberBox.Name = "customerNumberBox";
-			customerNumberBox.PlaceholderText = Translation.customer_number;
-			customerNumberBox.Size = new Size(125, 27);
-			customerNumberBox.TabIndex = 1;
+			titleBox.TextChanged += Update;
 			// 
 			// categoryBox
 			// 
@@ -62,9 +56,11 @@
 			categoryBox.Name = "categoryBox";
 			categoryBox.Size = new Size(218, 28);
 			categoryBox.TabIndex = 2;
+			categoryBox.SelectedIndexChanged += Update;
 			// 
 			// createButton
 			// 
+			createButton.Enabled = false;
 			createButton.Location = new Point(12, 292);
 			createButton.Name = "createButton";
 			createButton.Size = new Size(94, 29);
@@ -83,17 +79,41 @@
 			descriptionBox.PlaceholderText = "Description (max 300 characters)";
 			descriptionBox.Size = new Size(253, 136);
 			descriptionBox.TabIndex = 4;
+			descriptionBox.TextChanged += Update;
+			// 
+			// customerNumberList
+			// 
+			customerNumberList.Columns.AddRange(new ColumnHeader[] { nameHeader, placeHeader });
+			customerNumberList.FullRowSelect = true;
+			customerNumberList.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+			customerNumberList.Location = new Point(271, 33);
+			customerNumberList.Name = "customerNumberList";
+			customerNumberList.Size = new Size(455, 237);
+			customerNumberList.Sorting = System.Windows.Forms.SortOrder.Ascending;
+			customerNumberList.TabIndex = 5;
+			customerNumberList.UseCompatibleStateImageBehavior = false;
+			customerNumberList.View = View.Details;
+			customerNumberList.Visible = false;
+			customerNumberList.SelectedIndexChanged += Update;
+			// 
+			// nameHeader
+			// 
+			nameHeader.Text = "Name";
+			// 
+			// placeHeader
+			// 
+			placeHeader.Text = "Place";
 			// 
 			// TicketCreation
 			// 
 			AcceptButton = createButton;
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(444, 348);
+			ClientSize = new Size(738, 348);
+			Controls.Add(customerNumberList);
 			Controls.Add(descriptionBox);
 			Controls.Add(createButton);
 			Controls.Add(categoryBox);
-			Controls.Add(customerNumberBox);
 			Controls.Add(titleBox);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
 			MaximizeBox = false;
@@ -101,6 +121,7 @@
 			Name = "TicketCreation";
 			StartPosition = FormStartPosition.CenterParent;
 			Text = "Create ticket";
+			Load += TicketCreation_Load;
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -108,9 +129,11 @@
 		#endregion
 
 		private TextBox titleBox;
-		private TextBox customerNumberBox;
 		private ComboBox categoryBox;
 		private Button createButton;
 		private TextBox descriptionBox;
+		private ListView customerNumberList;
+		private ColumnHeader nameHeader;
+		private ColumnHeader placeHeader;
 	}
 }

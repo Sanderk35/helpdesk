@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using Helpdesk.Tickets;
 
 namespace Helpdesk.Customer
 {
@@ -18,11 +19,13 @@ namespace Helpdesk.Customer
 		private SqlConnection _connection;
 
 		public long _userId;
+		
+		private bool _isClosing;
 
 		public TicketsOverview(long id)
 		{
 			InitializeComponent();
-			this.refreshButton.Image = (Image)(new Bitmap(Properties.Resources.refresh, new Size(32, 32)));
+			refreshButton.Image = new Bitmap(Properties.Resources.refresh, new Size(32, 32));
 			_userId = id;
 		}
 
@@ -48,18 +51,16 @@ namespace Helpdesk.Customer
 					if (result == DialogResult.Yes)
 					{
 						query = "UPDATE Tickets SET state = 2, pendingClosure = 0 WHERE id = @id";
-						using (SqlConnection connection = new SqlConnection(_connectionString))
-						{
-							connection.Open();
-							SqlCommand command = new SqlCommand(query, connection);
-							command.Parameters.AddWithValue("@id", (long)row["id"]);
-							command.ExecuteNonQuery();
-						}
+						using SqlConnection connection = new SqlConnection(_connectionString);
+						connection.Open();
+						SqlCommand command = new SqlCommand(query, connection);
+						command.Parameters.AddWithValue("@id", (long)row["id"]);
+						command.ExecuteNonQuery();
 					}
 				}
 			}
-			
-			query = "SELECT title, state FROM Tickets WHERE userId = @userId ORDER BY state";
+
+			query = "SELECT id, title, state FROM Tickets WHERE userId = @userId ORDER BY state";
 
 			dataTable = new DataTable();
 			using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -73,6 +74,7 @@ namespace Helpdesk.Customer
 			foreach (DataRow row in dataTable.Rows)
 			{
 				ListViewItem item = new ListViewItem(row["title"].ToString());
+				item.Tag = row["id"].ToString();
 				if ((int)row["state"] == 1)
 					item.ImageKey = "Open.png";
 				else if ((int)row["state"] == 0)
@@ -94,14 +96,35 @@ namespace Helpdesk.Customer
 
 		private void openButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Nu zou de chat openen, maar die functie is nog niet geïmplementeerd.");
+			long id = long.Parse(ticketList.SelectedItems[0].Tag.ToString());
+			Chat chat = new Chat(id, _userId, 0);
+			this.Hide();
+			chat.ShowDialog();
+			this.Show();
 		}
 
-		private void TicketsOverview_FormClosed(object sender, FormClosedEventArgs e)
+		private void TicketsOverview_FormClosed(object sender, FormClosingEventArgs e)
 		{
-			Login login = new();
-			login.Show();
-			Hide();
+			if (!_isClosing)
+			{
+				DialogResult result = MessageBox.Show(Translation.close_the_app, Translation.close_the_app_caption, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
+
+				if (result == DialogResult.Yes)
+				{
+					_isClosing = true;
+					Application.Exit();
+				}
+				else if (result == DialogResult.No)
+				{
+					Login login = new();
+					login.Show();
+					Hide();
+				}
+				else if (result == DialogResult.Cancel)
+				{
+					e.Cancel = true;
+				}
+			}
 		}
 
 		private void ticketList_DrawItem(object sender, DrawListViewItemEventArgs e)

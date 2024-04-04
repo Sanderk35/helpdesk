@@ -141,6 +141,24 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to close the application?.
+        /// </summary>
+        internal static string close_the_app {
+            get {
+                return ResourceManager.GetString("close_the_app", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close the application?.
+        /// </summary>
+        internal static string close_the_app_caption {
+            get {
+                return ResourceManager.GetString("close_the_app_caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat.
         /// </summary>
         internal static string confirm_text {

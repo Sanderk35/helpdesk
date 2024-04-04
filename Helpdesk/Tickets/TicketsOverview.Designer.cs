@@ -118,7 +118,7 @@
 			Name = "TicketsOverview";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Your tickets";
-			FormClosed += TicketsOverview_FormClosed;
+			FormClosing += TicketsOverview_FormClosed;
 			Load += TicketsOverview_Load;
 			ResumeLayout(false);
 		}

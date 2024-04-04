@@ -190,7 +190,7 @@
 			Name = "StaffScreen";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Staff";
-			FormClosed += StaffScreen_FormClosed;
+			FormClosing += StaffScreen_FormClosed;
 			tableLayoutPanel1.ResumeLayout(false);
 			ResumeLayout(false);
 		}

@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using Helpdesk.Tickets;
 
 namespace Helpdesk.Customer
 {
@@ -11,11 +12,13 @@ namespace Helpdesk.Customer
 		public long _ictId;
 
 		public long _specialism;
+		
+		private bool _isClosing;
 
 		public TicketsOverviewIT(long id, long specialism)
 		{
 			InitializeComponent();
-			this.refreshButton.Image = (Image)(new Bitmap(Properties.Resources.refresh, new Size(32, 32)));
+			refreshButton.Image = new Bitmap(Properties.Resources.refresh, new Size(32, 32));
 			_ictId = id;
 			_specialism = specialism;
 		}
@@ -24,8 +27,8 @@ namespace Helpdesk.Customer
 		{
 			ticketList.Items.Clear();
 			string query = "SELECT T.id, title, description, state, ictId, creationDate, specialism, englishSpecialism FROM Tickets T " +
-			               "JOIN Specialism S ON specialismId = S.id " +
-			               "WHERE ictId = @staffId OR ictId IS NULL ORDER BY state";
+						   "JOIN Specialism S ON specialismId = S.id " +
+						   "WHERE ictId = @staffId OR ictId IS NULL ORDER BY state";
 
 			DataTable dataTable = new DataTable();
 			using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -43,10 +46,9 @@ namespace Helpdesk.Customer
 				{
 					ListViewItem item = new ListViewItem(row["title"].ToString());
 					item.SubItems.Add(row["description"].ToString());
-					if (CultureInfo.CurrentCulture.Name == "nl-NL")
-						item.SubItems.Add(row["specialism"].ToString());
-					else
-						item.SubItems.Add(row["englishSpecialism"].ToString());
+					item.SubItems.Add(CultureInfo.CurrentCulture.Name == "nl-NL"
+						? row["specialism"].ToString()
+						: row["englishSpecialism"].ToString());
 					item.SubItems.Add(row["creationDate"].ToString());
 					item.ImageKey = "Open.png";
 					item.Tag = row["id"].ToString();
@@ -57,17 +59,17 @@ namespace Helpdesk.Customer
 				{
 					ListViewItem item = new ListViewItem(row["title"].ToString());
 					item.SubItems.Add(row["description"].ToString());
-					if (CultureInfo.CurrentCulture.Name == "nl-NL")
-						item.SubItems.Add(row["specialism"].ToString());
-					else
-						item.SubItems.Add(row["englishSpecialism"].ToString());
+					item.SubItems.Add(CultureInfo.CurrentCulture.Name == "nl-NL"
+						? row["specialism"].ToString()
+						: row["englishSpecialism"].ToString());
 					item.SubItems.Add(row["creationDate"].ToString());
-					if ((int)row["state"] == 0)
-						item.ImageKey = "Open.png";
-					else if ((int)row["state"] == 1)
-						item.ImageKey = "Answered.png";
-					else if ((int)row["state"] == 2)
-						item.ImageKey = "Closed.png";
+					item.ImageKey = (int)row["state"] switch
+					{
+						0 => "Open.png",
+						1 => "Answered.png",
+						2 => "Closed.png",
+						_ => item.ImageKey
+					};
 					item.Tag = row["id"].ToString();
 					item.Group = ticketList.Groups[0];
 					ticketList.Items.Add(item);
@@ -83,10 +85,11 @@ namespace Helpdesk.Customer
 		{
 			if (ticketList.SelectedItems[0].Group == ticketList.Groups[0])
 			{
-				// Ticket ticket = new Ticket(long.Parse(ticketList.SelectedItems[0].Tag.ToString()));
-				// ticket.Show();
-				// this.Hide();
-				MessageBox.Show("Nu zou de chat openen, maar die functie is nog niet geïmplementeerd.");
+				long id = long.Parse(ticketList.SelectedItems[0].Tag.ToString());
+				Chat chat = new Chat(id, _ictId, 2);
+				this.Hide();
+				chat.ShowDialog();
+				this.Show(); ;
 			}
 			else
 			{
@@ -103,11 +106,28 @@ namespace Helpdesk.Customer
 			}
 		}
 
-		private void TicketsOverview_FormClosed(object sender, FormClosedEventArgs e)
+		private void TicketsOverview_FormClosed(object sender, FormClosingEventArgs e)
 		{
-			Login login = new();
-			login.Show();
-			Hide();
+			if (!_isClosing)
+			{
+				DialogResult result = MessageBox.Show(Translation.close_the_app, Translation.close_the_app_caption, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
+
+				if (result == DialogResult.Yes)
+				{
+					_isClosing = true;
+					Application.Exit();
+				}
+				else if (result == DialogResult.No)
+				{
+					Login login = new();
+					login.Show();
+					Hide();
+				}
+				else if (result == DialogResult.Cancel)
+				{
+					e.Cancel = true;
+				}
+			}
 		}
 
 		private void ticketList_DrawItem(object sender, DrawListViewItemEventArgs e)
@@ -166,7 +186,7 @@ namespace Helpdesk.Customer
 						}
 						catch (SqlException ex)
 						{
-							
+
 						}
 						finally
 						{
@@ -176,6 +196,5 @@ namespace Helpdesk.Customer
 				}
 			}
 		}
-
 	}
 }

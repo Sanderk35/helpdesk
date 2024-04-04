@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Helpdesk.Tickets;
 
 namespace Helpdesk.Customer
 {
@@ -17,11 +18,13 @@ namespace Helpdesk.Customer
 		private SqlConnection _connection;
 
 		public long _helpdeskId;
+		
+		private bool _isClosing;
 
 		public TicketsOverviewHelpdesk(long id)
 		{
 			InitializeComponent();
-			this.refreshButton.Image = (Image)(new Bitmap(Properties.Resources.refresh, new Size(32, 32)));
+			refreshButton.Image = new Bitmap(Properties.Resources.refresh, new Size(32, 32));
 			_helpdeskId = id;
 		}
 
@@ -30,12 +33,12 @@ namespace Helpdesk.Customer
 			ticketList.Items.Clear();
 			string query = "IF @number IS NOT NULL AND @number != '' " +
 						   "BEGIN " +
-						   "SELECT title, state, customerNumber FROM Tickets " +
+						   "SELECT id, title, state, customerNumber FROM Tickets " +
 						   "WHERE helpdeskId = @helpdeskId AND (customerNumber LIKE '%' + @number + '%' OR @number IS NULL) " +
 						   "END " +
 						   "ELSE " +
 						   "BEGIN " +
-						   "SELECT title, state, customerNumber FROM Tickets " +
+						   "SELECT id, title, state, customerNumber FROM Tickets " +
 						   "WHERE helpdeskId = @helpdeskId " +
 						   "END";
 			string search = searchBox.Text;
@@ -60,6 +63,7 @@ namespace Helpdesk.Customer
 				else if ((int)row["state"] == 2)
 					item.ImageKey = "Closed.png";
 				item.SubItems.Add(row["customerNumber"].ToString());
+				item.Tag = row["id"];
 				ticketList.Items.Add(item);
 			}
 			ticketList.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.None);
@@ -76,14 +80,35 @@ namespace Helpdesk.Customer
 
 		private void openButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Nu zou de chat openen, maar die functie is nog niet geïmplementeerd.");
+			long id = long.Parse(ticketList.SelectedItems[0].Tag.ToString());
+			Chat chat = new Chat(id, _helpdeskId, 1);
+			this.Hide();
+			chat.ShowDialog();
+			this.Show();
 		}
 
-		private void TicketsOverview_FormClosed(object sender, FormClosedEventArgs e)
+		private void TicketsOverview_FormClosed(object sender, FormClosingEventArgs e)
 		{
-			Login login = new();
-			login.Show();
-			Hide();
+			if (!_isClosing)
+			{
+				DialogResult result = MessageBox.Show(Translation.close_the_app, Translation.close_the_app_caption, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
+
+				if (result == DialogResult.Yes)
+				{
+					_isClosing = true;
+					Application.Exit();
+				}
+				else if (result == DialogResult.No)
+				{
+					Login login = new();
+					login.Show();
+					Hide();
+				}
+				else if (result == DialogResult.Cancel)
+				{
+					e.Cancel = true;
+				}
+			}
 		}
 
 		private void ticketList_DrawItem(object sender, DrawListViewItemEventArgs e)
@@ -108,14 +133,7 @@ namespace Helpdesk.Customer
 
 		private void ticketList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
-			if (ticketList.SelectedItems.Count > 0)
-			{
-				openButton.Enabled = true;
-			}
-			else
-			{
-				openButton.Enabled = false;
-			}
+			openButton.Enabled = ticketList.SelectedItems.Count > 0;
 		}
 	}
 }
