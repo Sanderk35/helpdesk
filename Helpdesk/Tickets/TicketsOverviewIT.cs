@@ -55,6 +55,19 @@ namespace Helpdesk.Customer
 					item.Group = ticketList.Groups[1];
 					ticketList.Items.Add(item);
 				}
+				else if ((int)row["state"] == 2)
+				{
+					ListViewItem item = new ListViewItem(row["title"].ToString());
+					item.SubItems.Add(row["description"].ToString());
+					item.SubItems.Add(CultureInfo.CurrentCulture.Name == "nl-NL"
+						? row["specialism"].ToString()
+						: row["englishSpecialism"].ToString());
+					item.SubItems.Add(row["creationDate"].ToString());
+					item.ImageKey = "Closed.png";
+					item.Tag = row["id"].ToString();
+					item.Group = ticketList.Groups[2];
+					ticketList.Items.Add(item);
+				}
 				else
 				{
 					ListViewItem item = new ListViewItem(row["title"].ToString());

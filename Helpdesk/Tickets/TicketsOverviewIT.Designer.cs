@@ -31,6 +31,7 @@
 			components = new System.ComponentModel.Container();
 			ListViewGroup listViewGroup1 = new ListViewGroup("Your claimed tickets", HorizontalAlignment.Left);
 			ListViewGroup listViewGroup2 = new ListViewGroup(Translation.available_tickets, HorizontalAlignment.Left);
+			ListViewGroup listViewGroup3 = new ListViewGroup("ListViewGroup", HorizontalAlignment.Left);
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TicketsOverviewIT));
 			openButton = new Button();
 			ticketList = new ListView();
@@ -58,11 +59,13 @@
 			// 
 			ticketList.Columns.AddRange(new ColumnHeader[] { name, description, specialism, creationDate });
 			ticketList.FullRowSelect = true;
-			listViewGroup1.Header = "Your claimed tickets";
+			listViewGroup1.Header = Translation.claimed_tickets;
 			listViewGroup1.Name = "claimedGroup";
 			listViewGroup2.Header = Translation.available_tickets;
 			listViewGroup2.Name = "openGroup";
-			ticketList.Groups.AddRange(new ListViewGroup[] { listViewGroup1, listViewGroup2 });
+			listViewGroup3.Header = Translation.closed;
+			listViewGroup3.Name = "closedGroup";
+			ticketList.Groups.AddRange(new ListViewGroup[] { listViewGroup1, listViewGroup2, listViewGroup3 });
 			ticketList.HideSelection = true;
 			ticketList.LargeImageList = imageList;
 			ticketList.Location = new Point(12, 12);

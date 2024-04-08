@@ -31,19 +31,48 @@ namespace Helpdesk.Customer
 		private void refresh()
 		{
 			ticketList.Items.Clear();
-			string query = "IF @number IS NOT NULL AND @number != '' " +
-						   "BEGIN " +
-						   "SELECT id, title, state, customerNumber FROM Tickets " +
-						   "WHERE helpdeskId = @helpdeskId AND (customerNumber LIKE '%' + @number + '%' OR @number IS NULL) " +
-						   "END " +
-						   "ELSE " +
-						   "BEGIN " +
-						   "SELECT id, title, state, customerNumber FROM Tickets " +
-						   "WHERE helpdeskId = @helpdeskId " +
-						   "END";
-			string search = searchBox.Text;
+			string query = "SELECT id, title, pendingClosure FROM Tickets WHERE helpdeskId = @userId";
 
 			DataTable dataTable = new DataTable();
+			using (SqlConnection connection = new SqlConnection(_connectionString))
+			{
+				connection.Open();
+				SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+				adapter.SelectCommand.Parameters.AddWithValue("@userId", _helpdeskId);
+				adapter.Fill(dataTable);
+			}
+
+			foreach (DataRow row in dataTable.Rows)
+			{
+				if ((bool)row["pendingClosure"])
+				{
+					DialogResult result = MessageBox.Show(string.Format(Translation.pending_closure, row["title"]), Translation.pending_closure_title, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+					if (result == DialogResult.Yes)
+					{
+						query = "UPDATE Tickets SET state = 2, pendingClosure = 0 WHERE id = @id";
+						using SqlConnection connection = new SqlConnection(_connectionString);
+						connection.Open();
+						SqlCommand command = new SqlCommand(query, connection);
+						command.Parameters.AddWithValue("@id", (long)row["id"]);
+						command.ExecuteNonQuery();
+					}
+				}
+			}
+			
+			ticketList.Items.Clear();
+			query = "IF @number IS NOT NULL AND @number != '' " +
+			        "BEGIN " +
+					"SELECT id, title, state, customerNumber FROM Tickets " +
+			        "WHERE helpdeskId = @helpdeskId AND (customerNumber LIKE '%' + @number + '%' OR @number IS NULL) " +
+			        "END " +
+			        "ELSE " +
+			        "BEGIN " +
+			        "SELECT id, title, state, customerNumber FROM Tickets " +
+			        "WHERE helpdeskId = @helpdeskId " +
+			        "END";
+			string search = searchBox.Text;
+
+			dataTable = new DataTable();
 			using (SqlConnection connection = new SqlConnection(_connectionString))
 			{
 				connection.Open();
@@ -133,7 +162,14 @@ namespace Helpdesk.Customer
 
 		private void ticketList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
-			openButton.Enabled = ticketList.SelectedItems.Count > 0;
+			if (ticketList.SelectedItems[0].ImageKey == "Closed.png")
+			{
+				openButton.Enabled = false;
+			}
+			else
+			{
+				openButton.Enabled = true;
+			}
 		}
 	}
 }

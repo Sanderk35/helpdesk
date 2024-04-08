@@ -295,4 +295,7 @@ Can you confirm that?</value>
     <data name="name" xml:space="preserve">
         <value>Name</value>
     </data>
+    <data name="closed" xml:space="preserve">
+        <value>Closed tickets</value>
+    </data>
 </root>

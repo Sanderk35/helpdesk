@@ -168,6 +168,15 @@ namespace Helpdesk {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Closed tickets.
+        /// </summary>
+        internal static string closed {
+            get {
+                return ResourceManager.GetString("closed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat.
         /// </summary>
         internal static string confirm_text {

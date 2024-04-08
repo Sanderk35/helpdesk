@@ -287,4 +287,7 @@ Gebruik een andere alstublieft.</value>
     <data name="name" xml:space="preserve">
         <value>Naam</value>
     </data>
+    <data name="closed" xml:space="preserve">
+        <value>Gesloten tickets</value>
+    </data>
 </root>
