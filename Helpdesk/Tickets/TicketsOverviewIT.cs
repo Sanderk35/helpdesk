@@ -7,8 +7,6 @@ namespace Helpdesk.Customer
 	{
 		public readonly string _connectionString = "Data Source=SANDERSLAPTOP\\SQLEXPRESS;Initial Catalog=Helpdesk;Integrated Security=True;";
 
-		private SqlConnection _connection;
-
 		public long _ictId;
 
 		public long _specialism;
